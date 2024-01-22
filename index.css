@@ -1,10 +1,20 @@
 body{
-
+background-color: #F6EDBD;
 }
-
+#top{
+    background-color:#FAE989;
+    color:black;
+    height: 20%;
+      position:static;
+      top: 0;
+      left: 0;
+      width: 100%;
+    
+    }
 .menu{
-background-color: pink;
-font-size: 20px;
+background-color:#FAE989;
+font-size: 16px;
+color:black;
 display:inline;
 
 
