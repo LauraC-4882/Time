@@ -1,11 +1,39 @@
-# Time
-"""
-Database：
-PHP：https://www.w3schools.com/php/php_mysql_create.asp 
-firebase：https://firebase.google.com/docs?hl=en&authuser=0&_gl=1*g6f37w*_ga*NTg2NTEyNjIwLjE2OTU5MjI1NTk.*_ga_CW55HF8NVT*MTY5NTkyMjU1OS4xLjEuMTY5NTkyMjYwMC4xOS4wLjA.
-//
-微信小程序：https://www.ruanyifeng.com/blog/2020/10/wechat-miniprogram-tutorial-part-one.html
-design：
-figma：https://www.figma.com/files/recents-and-sharing/recently-viewed?fuid=1223021297020654881
-axure：https://www.axure.com/
-"""
+
+
+# 项目开发指南Onboarding
+
+## 欢迎
+
+欢迎加入我们的项目！本文档将指导您如何在指定目录下进行后端开发工作。
+
+## 开始之前
+
+在开始之前，请确保您已经配置了所有必要的开发工具和环境。这可能包括但不限于：
+
+- 版本控制系统（如 Git）
+- 适合项目的编程语言环境
+- 依赖管理工具
+- 任何特定于项目的工具或库
+
+## 开发目录结构
+
+您将在名为 `your_project_dir` 的目录下进行开发。该目录的结构大致如下：
+
+```
+WIP
+```
+
+## 开发流程
+
+1. **代码编写**：在 `src/` 目录下编写您的代码。请确保您的代码清晰、易读，并遵循项目的编码标准。
+2. **测试**：编写测试来验证您的代码。测试代码应放在 `tests/` 目录下。
+3. **文档**：请在 `docs/` 目录下更新相关文档，以帮助其他开发者理解您的代码。
+4. **提交代码**：使用版本控制系统提交您的更改。请确保您的提交信息清晰准确。
+5. **代码审查**：提交您的代码后，可能需要进行代码审查。请参与审查过程，以确保代码质量。
+
+## 协作规范
+
+- **分支策略**：请遵循我们的分支命名和管理策略。
+- **代码风格**：确保遵循项目的代码风格和最佳实践。
+- **沟通**：在遇到问题或需要帮助时，请及时与团队成员沟通。
+
