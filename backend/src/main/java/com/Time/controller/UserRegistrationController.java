@@ -1,7 +1,7 @@
-package com.Time.Controller;
+package com.Time.controller;
 
-import com.Time.DTO.UserRegistrationDto;
-import com.Time.Service.UserService;
+import com.Time.dto.UserRegistrationDto;
+import com.Time.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

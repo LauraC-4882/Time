@@ -1,4 +1,4 @@
-package com.Time.DTO;
+package com.Time.dto;
 
 import java.util.List;
 import lombok.Getter;

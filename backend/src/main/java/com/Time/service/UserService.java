@@ -1,8 +1,8 @@
-package com.Time.Service;
+package com.Time.service;
 
-import com.Time.DTO.UserRegistrationDto;
-import com.Time.Entity.User;
-import com.Time.UserRepository;
+import com.Time.dto.UserRegistrationDto;
+import com.Time.module.User;
+import com.Time.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

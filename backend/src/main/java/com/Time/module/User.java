@@ -1,8 +1,6 @@
-package com.Time.Entity;
+package com.Time.module;
 
-import org.springframework.stereotype.Repository;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 import java.util.Set;
 
@@ -13,6 +11,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,8 +29,8 @@ public class User {
     @Lob
     private byte[] avatar; // Or String for a URL to the image
 
-    @OneToMany(mappedBy = "user")
-    private Set<Post> posts;
+//    @OneToMany(mappedBy = "user")
+//    private Set<Post> posts;
 
     @ManyToMany
     @JoinTable(name = "user_followers",

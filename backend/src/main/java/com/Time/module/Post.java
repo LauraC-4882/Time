@@ -1,12 +1,15 @@
-package com.Time.Entity;
+package com.Time.module;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Repository
+@Setter
+@Getter
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +21,10 @@ public class Post {
     private String content;
 
     private boolean draft;
+
+    private boolean anonymous;
+
+    private boolean personal;
 
     @ManyToMany(mappedBy = "likedPosts")
     private Set<User> likedBy;
