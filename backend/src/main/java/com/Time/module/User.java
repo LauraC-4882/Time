@@ -27,8 +27,8 @@ public class User {
     @Lob
     private byte[] avatar; // Or String for a URL to the image
 
-//    @OneToMany(mappedBy = "user")
-//    private Set<Post> posts;
+    @OneToMany(mappedBy = "user")
+    private Set<Post> posts;
 
     @ManyToMany
     @JoinTable(name = "user_followers",

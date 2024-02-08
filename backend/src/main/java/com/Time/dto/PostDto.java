@@ -3,9 +3,6 @@ package com.Time.dto;
 import com.Time.module.User;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.List;
-
 @Setter
 @Getter
 public class PostDto {
@@ -16,5 +13,6 @@ public class PostDto {
     private boolean draft;
 
     private boolean anonymous;
+
     private boolean personal;
 }

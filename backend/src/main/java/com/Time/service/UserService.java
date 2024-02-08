@@ -1,6 +1,5 @@
 package com.Time.service;
 
-import com.Time.dto.UserRegistrationDto;
 import com.Time.module.User;
 import com.Time.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
