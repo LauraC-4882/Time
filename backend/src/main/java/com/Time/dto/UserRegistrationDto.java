@@ -8,7 +8,6 @@ import lombok.Setter;
 @Getter
 public class UserRegistrationDto {
     private String username;
-    private String password;
     private List<String> phoneNumbers;
     private String signature;
 }
