@@ -2,11 +2,11 @@ import React from "react";
 
 //define
 let menu="menu";
-const Nav = () => {
+function Nav() {
   console.log("check")
   return (
     //html
-    <nav className={menu}>
+    <nav>
       <ul>
         <li><a href="#">About</a></li>
         <li><a href="#">Post</a></li>
@@ -15,7 +15,6 @@ const Nav = () => {
     </nav>
   );
 }
- 
 export default Nav;
 
 
