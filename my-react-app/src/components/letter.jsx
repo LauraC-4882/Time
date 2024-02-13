@@ -1,8 +1,7 @@
 import React from "react";
 
 //define
-let menu="menu";
-function Nav() {
+function Letter() {
   console.log("check")
   return (
     //html
@@ -15,6 +14,6 @@ function Nav() {
     </nav>
   );
 }
-export default Nav;
+export default Letter;
 
 
