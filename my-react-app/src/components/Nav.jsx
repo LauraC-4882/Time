@@ -11,6 +11,7 @@ function Nav() {
         <li><a href="#">About</a></li>
         <li><a href="#">Post</a></li>
         <li><a href="letter">Letters</a></li>
+        <li><a href="profile">Profile</a></li>
       </ul>
     </nav>
   );
