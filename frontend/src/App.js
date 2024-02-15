@@ -1,11 +1,10 @@
-import { Avatar, Button, NextUIProvider } from "@nextui-org/react";
+import { NextUIProvider } from "@nextui-org/react";
+import Home from "./pages/home/Home";
 
 function App() {
   return (
     <NextUIProvider>
-      <div>asdasds</div>
-      <Button color="primary">Button</Button>
-      <Avatar name="JC"></Avatar>
+      <Home />
     </NextUIProvider>
   );
 }
