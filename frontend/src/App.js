@@ -1,10 +1,10 @@
 import { NextUIProvider } from "@nextui-org/react";
-import Home from "./pages/home/Home";
+import Main from "./Main";
 
 function App() {
   return (
     <NextUIProvider>
-      <Home />
+      <Main />
     </NextUIProvider>
   );
 }
