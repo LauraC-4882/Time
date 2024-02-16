@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, CardHeader, CardBody, CardFooter, Avatar, Button } from '@nextui-org/react';
 
-// Define the component as a function
+// Post card
 const ProfileCard = () => {
   const [isFollowed, setIsFollowed] = useState(false);
 
