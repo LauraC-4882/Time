@@ -7,7 +7,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-let Home = () => {
+let About = () => {
   return (
     <Navbar>
       
@@ -49,4 +49,4 @@ let Home = () => {
   );
 };
 
-export default Home;
+export default About;

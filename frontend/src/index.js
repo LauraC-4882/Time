@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
+// import About from "./pages/about/About"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -17,8 +18,9 @@ root.render(
     <Home />
       <Router>
         <Routes>
-        
-        <Route path="/" element={<Profile />} /> 
+        <Route path="/profile" element={<Profile />} /> 
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/about" element={<About />} /> */}
         </Routes>
       </Router>
   </React.StrictMode>
