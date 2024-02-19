@@ -1,11 +1,22 @@
-import { NextUIProvider } from "@nextui-org/react";
-import Home from "./pages/home/Home";
-import Profile from "./pages/profile/Profile";
+
+import {NextUIProvider} from "@nextui-org/react";
+import Main from "./pages/home/Main";
 
 function App() {
   return (
     <NextUIProvider>
-      <Profile></Profile>
+
+      {/* Header */}
+      <div
+        style={{
+          height: "100%",
+          background: "linear-gradient(rgb(246,237,189), rgba(246,237,189, 0))",
+        }}
+      >
+        <Main />
+      </div>
+      <div id="modal"></div>
+
     </NextUIProvider>
   );
 }
