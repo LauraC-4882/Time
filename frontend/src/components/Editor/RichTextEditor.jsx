@@ -51,7 +51,7 @@ const editorConfig = {
 export default function TextEditor() {
   return (
     <LexicalComposer initialConfig={editorConfig}>
-      <div className="editor-container" style={{margin: "0"}}>
+      <div className="editor-container" style={{margin: "0", border: "1px black solid"}}>
         <ToolbarPlugin />
         <div className="editor-inner">
           <RichTextPlugin
