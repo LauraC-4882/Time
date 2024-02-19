@@ -9,21 +9,18 @@ export const ModalCard = ({isOpen, handleQuit, children}) => {
   const customStyles = {
     "content": {
       top: "10%",
-      left: "30%",
-      right: "30%",
+      left: "28%",
+      right: "28%",
       bottom: "20%",
-      // marginRight: "-50%",
-      // transform: "translate(-50%, -50%)",
     },
     "border-radius": "50px",
   };
   return (
     <div>
-      <div id="modal"></div>
       <Modal
         isOpen={isOpen}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="General Modal"
         onRequestClose={handleQuit}
       >
         {children}
