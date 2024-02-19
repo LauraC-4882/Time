@@ -1,33 +1,70 @@
-# Time项目开发指南Onboarding
+# Getting Started with Create React App
 
-## 欢迎
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-欢迎加入我们的项目！本文档将指导您如何在指定目录下进行前端开发工作。
+## Available Scripts
 
-## 开始之前
+In the project directory, you can run:
 
-在开始之前，请确保您已经配置了所有必要的开发工具和环境。这可能包括但不限于：
+### `npm start`
 
-- 版本控制系统（如 Git）
-- 适合项目的编程语言环境（java，react)
-- 依赖管理工具(discord)
-- 任何特定于项目的工具或库(Tailwind)
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## 开发目录结构
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-您将在名为 `frontend` 的目录下进行开发。该目录的结构大致如下：
+### `npm test`
 
-## 开发流程
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-1. **代码编写**：在 `src/` 目录下编写您的代码。请确保您的代码清晰、易读，并遵循项目的编码标准。
-2. **测试**：编写测试来验证您的代码。测试代码应放在 `tests/` 目录下。
-3. **文档**：请在 `docs/` 目录下更新相关文档，以帮助其他开发者理解您的代码。
-4. **代码审查**：提交您的代码后，可能需要进行代码审查。请参与审查过程，以确保代码质量。
+### `npm run build`
 
-## 协作规范
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-- **分支策略**：从frontend branch拉branch。branch名字避免大写。
-- **代码提交**：commit要具体地写每次改的地方是什么
-- **代码风格**：极简
-- **沟通**：在遇到问题或需要帮助时，请及时与组内成员沟通。
-- **问题**：如有tech方面的问题可以发在discord的tech help里面
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
