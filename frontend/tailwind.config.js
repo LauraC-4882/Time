@@ -1,5 +1,5 @@
 // tailwind.config.js
-const { nextui } = require("@nextui-org/react");
+const {nextui} = require("@nextui-org/react");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -17,6 +17,10 @@ module.exports = {
           colors: {
             primary: {
               DEFAULT: "#D97706",
+              foreground: "#000000",
+            },
+            secondary: {
+              DEFAULT: "#FBBF24",
               foreground: "#000000",
             },
             focus: "#D97706",
