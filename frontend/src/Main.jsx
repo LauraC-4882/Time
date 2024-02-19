@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import {
   Avatar,
   Button,
@@ -15,7 +16,16 @@ import {
 } from "react-icons/vsc";
 import SearchIcon from "./components/icons/SearchIcon";
 
+import React, { useState } from "react";
+import ModalCard from "./components/ModalCard";
 const Main = () => {
+  const [openModal, setOpenModal] = useState(false);
+  let handleOpenPost = () => {
+    setOpenModal(true);
+  };
+  let handleRequestQuitPost = () => {
+    setOpenModal(false);
+  };
   return (
     <div style={{ display: "flex", flexDirection: "column", padding: "50px" }}>
       <div
@@ -55,12 +65,23 @@ const Main = () => {
           }}
         >
           <PagingCard></PagingCard>
-          <Button color="primary">Write A New Post</Button>
+          <Button color="primary" onClick={handleOpenPost}>
+            Write A New Post
+          </Button>
         </div>
+        <PostModal
+          handleQuit={handleRequestQuitPost}
+          isOpen={openModal}
+        ></PostModal>
       </div>
     </div>
   );
 };
+
+let PostModal = ({ handleQuit, isOpen }) => {
+  return <ModalCard handleQuit={handleQuit} isOpen={isOpen}></ModalCard>;
+};
+
 let PagingCard = () => {
   return (
     <Card style={{ width: "350px", height: "65px" }}>
