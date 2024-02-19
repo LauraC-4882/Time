@@ -1,9 +1,11 @@
+
 import {NextUIProvider} from "@nextui-org/react";
 import Main from "./pages/home/Main";
 
 function App() {
   return (
     <NextUIProvider>
+
       {/* Header */}
       <div
         style={{
@@ -15,7 +17,6 @@ function App() {
       </div>
       <div id="modal"></div>
 
-      {/* footer */}
     </NextUIProvider>
   );
 }
