@@ -1,5 +1,5 @@
 import {NextUIProvider} from "@nextui-org/react";
-import Main from "./Main";
+import Main from "./pages/home/Main";
 
 function App() {
   return (
@@ -13,6 +13,8 @@ function App() {
       >
         <Main />
       </div>
+      <div id="modal"></div>
+
       {/* footer */}
     </NextUIProvider>
   );

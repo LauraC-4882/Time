@@ -1,9 +1,9 @@
-import {Button, Card, CardBody, Divider, Input} from "@nextui-org/react";
+import {Button, Card, CardBody, Input} from "@nextui-org/react";
 import React, {useState} from "react";
 import {VscArrowSmallLeft, VscArrowSmallRight} from "react-icons/vsc";
-import ModalCard from "./components/ModalCard";
-import {PostCard, PostCards} from "./components/PostCardsComp";
-import SearchIcon from "./components/icons/SearchIcon";
+import {PostCard, PostCards} from "../../components/PostCardsComp";
+import SearchIcon from "../../components/icons/SearchIcon";
+import PostModal from "./PostModal";
 const Main = () => {
   const [openModal, setOpenModal] = useState(false);
   let handleOpenPost = () => {
@@ -56,23 +56,6 @@ const Main = () => {
         <PostModal handleQuit={handleRequestQuitPost} isOpen={openModal}></PostModal>
       </div>
     </div>
-  );
-};
-
-let PostModal = ({handleQuit, isOpen}) => {
-  return (
-    <ModalCard handleQuit={handleQuit} isOpen={isOpen}>
-      <div style={{display: "flex", flexDirection: "column"}}>
-        <p style={{fontSize: 20, fontWeight: 700}}>Write your Own Post</p>
-        <Divider />
-        <p style={{fontSize: 14, fontWeight: 700}}>Do you want to tell others?</p>
-        <div style={{display: "flex", width: "25%", justifyContent: "space-between"}}>
-          <Button color="primary">Yes</Button>
-          <Button color="primary">No</Button>
-        </div>
-        <p style={{fontSize: 14, fontWeight: 700}}>Wite in your own words</p>
-      </div>
-    </ModalCard>
   );
 };
 
