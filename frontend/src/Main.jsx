@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import {Button, Card, CardBody, Divider, Input} from "@nextui-org/react";
 import React, {useState} from "react";
 import {VscArrowSmallLeft, VscArrowSmallRight} from "react-icons/vsc";

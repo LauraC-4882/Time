@@ -1,11 +1,5 @@
 import React from "react";
-export const SearchIcon = ({
-  size = 24,
-  strokeWidth = 1.5,
-  width,
-  height,
-  ...props
-}) => (
+export const SearchIcon = ({size = 24, strokeWidth = 1.5, width, height, ...props}) => (
   <svg
     aria-hidden="true"
     fill="none"
