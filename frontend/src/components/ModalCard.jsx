@@ -9,8 +9,8 @@ export const ModalCard = ({isOpen, handleQuit, children}) => {
   const customStyles = {
     "content": {
       top: "10%",
-      left: "28%",
-      right: "28%",
+      left: "20%",
+      right: "20%",
       bottom: "20%",
     },
     "border-radius": "50px",
