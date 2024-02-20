@@ -1,4 +1,6 @@
-# Time项目开发指南Onboarding
+# Time 项目开发指南 Onboarding
+
+0.1
 
 ## 欢迎
 
@@ -26,7 +28,7 @@
 
 ## 协作规范
 
-- **分支策略**：branch名字避免大写。.idea & target不要推。
+- **分支策略**：branch 名字避免大写。.idea & target 不要推。
 - **代码风格**：IntelliJ
 - **沟通**：在遇到问题或需要帮助时，请及时与组内成员沟通。
-- **问题**：如有tech方面的问题可以发在discord的tech help里面
+- **问题**：如有 tech 方面的问题可以发在 discord 的 tech help 里面
