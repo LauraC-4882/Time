@@ -5,11 +5,15 @@ public class AuthController {
 
     @PostMapping("/recover-password")
     public ResponseEntity<?> recoverPassword(@RequestBody RecoveryRequest recoveryRequest) {
-        // Implement password recovery logic using email or phone number
+        recoveryRequest.getEmail();
+        recoveryRequest.getPhoneNumber();
+        return ResponseEntity.ok("Password recovery initiated successfully.");
     }
 
     @PostMapping("/recover-username")
     public ResponseEntity<?> recoverUsername(@RequestBody RecoveryRequest recoveryRequest) {
-        // Implement username recovery logic using email or phone number
+        recoveryRequest.getEmail();
+        recoveryRequest.getPhoneNumber();
+        return ResponseEntity.ok("Username recovery initiated successfully.");
     }
 }
