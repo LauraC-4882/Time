@@ -1,4 +1,5 @@
 import {NextUIProvider} from "@nextui-org/react";
+import Footer from "./components/Footer";
 import Main from "./pages/home/Main";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         }}
       >
         <Main />
+        <Footer></Footer>
       </div>
       <div id="modal"></div>
 
