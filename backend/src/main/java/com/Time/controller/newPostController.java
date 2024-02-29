@@ -10,17 +10,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/api")
-public class newPostController {
-    @Autowired
-    private newPostService postService;
+@PostMapping("/submit-form") //change for future
+public String submitForm(@ModelAttribute FormData formData) {
+    System.out.println("Relationship: " + formData.getRelationship());
+    return "redirect:/form-success"; // Redirect to a success page
+}
 
-    @PostMapping("/newPost")
-    public ResponseEntity<?> creatNewPost(@RequestBody PostDto postDto) throws Exception {
-        postService.newPost(postDto);
-        return new ResponseEntity<>("User registered successfully", HttpStatus.CREATED);
-    }
+@GetMapping("/form-success")
+public String formSuccess() {
+    return "form-success";
+}
 
 
 }
