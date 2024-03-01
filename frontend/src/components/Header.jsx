@@ -1,4 +1,5 @@
 import { Badge, Avatar } from "@nextui-org/react";
+import { Outlet, Link } from "react-router-dom";
 
 
 let Header = () => {
@@ -9,11 +10,11 @@ let Header = () => {
 
       <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
         <div style={{ display: "flex", justifyContent: "space-between", width: "40%" }}>
-          <a href=""><span>HOME</span></a>
+          <Link to="/"><span>HOME</span></Link>
 
-          <a href=""><span>LETTERS</span></a>
+          <Link to="/letters"><span>LETTERS</span></Link>
 
-          <a href=""><span>ABOUT</span></a>
+          <Link to="/about"><span>ABOUT</span></Link>
         </div>
         <Badge content="5" color="primary">
           <Avatar

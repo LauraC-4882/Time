@@ -1,7 +1,7 @@
 import { NextUIProvider } from "@nextui-org/react";
 import Footer from "./components/Footer";
-import Main from "./pages/home/Main";
-import Header from "./components/Header"
+import Header from "./components/Header";
+import { Outlet } from "react-router-dom";
 function App() {
   return (
     <NextUIProvider>
@@ -12,7 +12,9 @@ function App() {
           background: "linear-gradient(rgb(246,237,189), rgba(246,237,189, 0))",
         }}
       >
-        <Main />
+        <div style={{ height: "80vh" }}>
+          <Outlet />
+        </div>
         <Footer></Footer>
       </div>
       <div id="modal"></div>
