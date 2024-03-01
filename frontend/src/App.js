@@ -1,11 +1,11 @@
-import {NextUIProvider} from "@nextui-org/react";
+import { NextUIProvider } from "@nextui-org/react";
 import Footer from "./components/Footer";
 import Main from "./pages/home/Main";
-
+import Header from "./components/Header"
 function App() {
   return (
     <NextUIProvider>
-      {/* Header */}
+      <Header></Header>
       <div
         style={{
           height: "100%",
@@ -17,7 +17,6 @@ function App() {
       </div>
       <div id="modal"></div>
 
-      {/* footer */}
     </NextUIProvider>
   );
 }
