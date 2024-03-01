@@ -1,11 +1,40 @@
-import React from "react";
+import React, { Children } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import ErrorPage from "./pages/ErrorPage";
+import Home from "./pages/home/Home";
+import LetterPage from "./pages/LetterPage";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+import AboutPage from "./pages/AboutPage";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Home />
+      },
+      {
+        path: "/letters",
+        element: <LetterPage />
+      },
+      {
+        path: "/about",
+        element: <AboutPage />
+      }
+
+    ]
+  },
+]);
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 );
