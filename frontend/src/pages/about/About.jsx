@@ -22,7 +22,7 @@ let About = () => {
         <p className="name">TIME</p>
       </NavbarBrand>
       </div>
-
+          {/* nav bar header */}
           <div style={{ display: "flex", flexDirection: "column" }}>
               <NavbarContent className="nav" justify="center" style={{padding:"10px"}}>
               <NavbarItem>
@@ -55,8 +55,8 @@ let About = () => {
 
       <div style={{display:"flex", flexDirection:"column",padding:"70px"}}>
 
-        <h>"Our Slogan"</h>
-        <h4>introduction</h4>
+        <h style={{display:"flex",color:"dark yellow",size:"30px"}}>"Our Slogan"</h>
+        <p>introduction</p>
       </div>
       <center>
       <Image
@@ -65,14 +65,21 @@ let About = () => {
     />
 </center>
     </div>
-    <Image
+    {/* <Image
       width={300}
       src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
-    />
-    
-    <Offer />
-    <Information />
+    /> */}
+    <div style={{padding:"30px"}}>
+    <Offer /></div>
+    <div style={{padding:"30px"}}>
+    <Information /></div>
+
+    {/* footer */}
+    <div style={{padding:"30px"}}>
+
+    </div>
       </div>
+    
   );
 };
 
