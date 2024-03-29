@@ -9,6 +9,8 @@ import {Image,Card, CardHeader, CardBody} from "@nextui-org/react";
 
 import Offer from "./Offer";
 import Information from "./Information";
+import arrow from "./images.png";
+import about from "./About.css";
 
 let About = () => {
   return (
@@ -50,27 +52,34 @@ let About = () => {
         </NavbarContent>
       </div>
     </Navbar>
-
-    <div class="Abouttop" style={{display: "flex", flexDirection: "row", padding:"70px", marginLeft:"15%"}}>
+<center>
+    <div class="Abouttop" style={{display: "flex", flexDirection: "row", padding:"70px", marginLeft:"25%"}}>
 
       <div style={{display:"flex", flexDirection:"column",padding:"70px"}}>
 
-        <h style={{display:"flex",color:"dark yellow",size:"30px"}}>"Our Slogan"</h>
-        <p>introduction</p>
+      <h class="about.slogan" style={{display:"flex", color:"dark yellow", fontSize:"30px", fontWeight:"bold"}}>"Our Slogan"</h>
+      <p style={{fontSize: "14px", color: "grey"}}>introduction</p>
       </div>
-      <center>
       <Image
       width={300}
-      src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
+      src={"https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"}
     />
-</center>
     </div>
-    {/* <Image
-      width={300}
-      src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
-    /> */}
+    
+    </center>
+    <center>
+      <div class="container">
+    <div class="arrow"></div>
+</div>
+    </center>
     <div style={{padding:"30px"}}>
     <Offer /></div>
+    <center>
+    { <Image
+      height={1}
+      src={arrow}
+    /> }
+    </center>
     <div style={{padding:"30px"}}>
     <Information /></div>
 
@@ -78,6 +87,7 @@ let About = () => {
     <div style={{padding:"30px"}}>
 
     </div>
+    
       </div>
     
   );
