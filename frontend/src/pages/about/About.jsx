@@ -6,13 +6,14 @@ import {
   Link,
 } from "react-router-dom";
 import {Image,Card, CardHeader, CardBody} from "@nextui-org/react";
+import Content from '../about/Content';
 
 import Offer from "./Offer";
 import Information from "./Information";
-import arrow from "./images.png";
 import about from "./About.css";
 
 let About = () => {
+  
   return (
     <div class="about" style={{backgroundColor:"#F6EDBD", }}>
     <Navbar style={{backgroundColor:"#FAE989"}}>
@@ -53,11 +54,11 @@ let About = () => {
       </div>
     </Navbar>
 <center>
-    <div class="Abouttop" style={{display: "flex", flexDirection: "row", padding:"70px", marginLeft:"25%"}}>
+    <div class="Abouttop" style={{display: "flex", flexDirection: "row", padding:"70px", justifyContent:"center"}}>
 
       <div style={{display:"flex", flexDirection:"column",padding:"70px"}}>
 
-      <h class="about.slogan" style={{display:"flex", color:"dark yellow", fontSize:"30px", fontWeight:"bold"}}>"Our Slogan"</h>
+      <h class="about.slogan" style={{display:"flex", color:"dark yellow", fontSize:"50px", fontWeight:"bold"}}>"Our Slogan"</h>
       <p style={{fontSize: "14px", color: "grey"}}>introduction</p>
       </div>
       <Image
@@ -68,17 +69,12 @@ let About = () => {
     
     </center>
     <center>
-      <div class="container">
     <div class="arrow"></div>
-</div>
     </center>
     <div style={{padding:"30px"}}>
     <Offer /></div>
     <center>
-    { <Image
-      height={1}
-      src={arrow}
-    /> }
+    
     </center>
     <div style={{padding:"30px"}}>
     <Information /></div>

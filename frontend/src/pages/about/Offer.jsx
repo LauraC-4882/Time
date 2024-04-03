@@ -9,15 +9,19 @@ let Offer = () =>{
     return(
       <><div class="Aboutmid" style={{ display: "flex", flexDirection: "column" }}>
           <center>
-          <div style={{fontsize:"30px",fontFamily:"fantasy"}}>
-        <h>Our services</h></div>
-        <div style={{fontsize:"20px"}}>
+          <div style={{display:"flex",color:"#D97706", fontSize:"10px", fontWeight:"bold",justifyContent:"center"}}>
+        <h >Our Services</h>
+        </div>
+          <div style={{display:"flex",color:"black", fontSize:"30px", fontWeight:"bold",justifyContent:"center"}}>
+        <h >What we offer</h>
+        </div>
+        <div style={{display:"flex",color:"gray",fontSize:"20px",justifyContent:"center"}}>
         <h>What we offer</h></div>
-        <div style={{color:"gray",fontsize:"10px"}}>
+        <div style={{display:"flex",color:"gray",fontSize:"15px",justifyContent:"center"}}>
         <p>enjoy and protect a peaceful environment for sharing feelings</p></div>
         </center>
       </div><div class="cards" >
-      <div className="flex" style={{flexDirection:"row", justifyContent:"center"}}>
+      <div className="flex" style={{flexDirection:"row", justifyContent:"center", margin:"30px"}}>
         
       <CustomCard />
       <Spacer x={4} />
