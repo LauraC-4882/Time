@@ -2,8 +2,6 @@ import {Image,Card, CardHeader, CardBody} from "@nextui-org/react";
 import {Spacer} from "@nextui-org/react";
 
 import {CustomCard} from "./CustomCard";
-import {CustomCard5} from "./CustomCard5";
-import {CustomCard6} from "./CustomCard6";
 
 let Offer = () =>{
     return(
@@ -24,10 +22,6 @@ let Offer = () =>{
       <div className="flex" style={{flexDirection:"row", justifyContent:"center", margin:"30px"}}>
         
       <CustomCard />
-      <Spacer x={4} />
-      <CustomCard5 />
-      <Spacer x={4} />
-      <CustomCard6 />
     </div>
 
         </div></>

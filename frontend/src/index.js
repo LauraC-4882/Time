@@ -1,40 +1,28 @@
-import React, { Children } from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./index.css";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
 import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import ErrorPage from "./pages/ErrorPage";
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom';
 import Home from "./pages/home/Home";
-import LetterPage from "./pages/LetterPage";
+import Profile from "./pages/profile/Profile";
+import About from './pages/about/About';
+// import About from "./pages/about/About"
 
-import AboutPage from "./pages/AboutPage";
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/",
-        element: <Home />
-      },
-      {
-        path: "/letters",
-        element: <LetterPage />
-      },
-      {
-        path: "/about",
-        element: <AboutPage />
-      }
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-    ]
-  },
-]);
-ReactDOM.createRoot(document.getElementById("root")).render(
+root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+    <About />
+    <Home />
+      <Router>
+        <Routes>
+        <Route path="/profile" element={<Profile />} /> 
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+         </Routes>
+      </Router> 
+  </React.StrictMode>
 );

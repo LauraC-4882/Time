@@ -5,11 +5,9 @@ import {CustomCard1} from "./CustomCard1";
 import {CustomCard2} from "./CustomCard2";
 import {CustomCard4} from "./CustomCard4";
 
-import Content from '../about/Content';
 
 
 let Information = () =>{
-  const contents = ['Content 1', 'Content 2', 'Content 3'];
     return(
         <><div class="Aboutbutton" style={{ display: "flex", flexDirection: "column" }}>
           <center>
@@ -32,12 +30,6 @@ let Information = () =>{
       <div className="flex" style={{flexDirection:"row", justifyContent:"center", margin:"30px"}}>
         
       <CustomCard1 />
-      <Spacer x={4} />
-      <CustomCard2 />
-      <Spacer x={4} />
-      <CustomCard3 />
-      <Spacer x={4} />
-      <CustomCard4 />
     </div>
 
         </div></>
