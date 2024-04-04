@@ -1,12 +1,23 @@
 import { NextUIProvider } from "@nextui-org/react";
-import Home from "./pages/home/Home";
-import Profile from "./pages/profile/Profile";
-import About from "./pages/about/About";
-
+import { Outlet } from "react-router-dom";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 function App() {
   return (
     <NextUIProvider>
-      <About></About>
+      <Header></Header>
+      <div
+        style={{
+          height: "100%",
+          background: "linear-gradient(rgb(246,237,189), rgba(246,237,189, 0))",
+          display:"flex",
+          flexDirection:"column"
+        }}
+      >
+        <Outlet />
+        <Footer></Footer>
+      </div>
+      <div id="modal"></div>
 
     </NextUIProvider>
   );
