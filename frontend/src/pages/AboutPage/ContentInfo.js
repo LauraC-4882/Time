@@ -1,6 +1,6 @@
 // about/ContentInfo.js
 // contents array
-export let content =()=> [
+export let ContentInfo =()=> [
     {img:"https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
     role:"Designers",
     description:"Roles+contact info"

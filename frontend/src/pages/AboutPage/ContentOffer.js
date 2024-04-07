@@ -1,6 +1,6 @@
 // about/ContentOffer.js
 // contents array
-export let content =()=> [
+export let ContentOffer =()=> [
   {img:"https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
   head:"Wanna save a time capsule for your future?",
   p1:"- We will send this private letter to you at your targeted time at targeted location",

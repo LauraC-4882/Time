@@ -1,39 +1,30 @@
 import {Image,Card, CardHeader, CardBody} from "@nextui-org/react";
 import {Spacer} from "@nextui-org/react";
-import {CustomCard3} from "./CustomCard3";
-import {CustomCard1} from "./CustomCard1";
-import {CustomCard2} from "./CustomCard2";
-import {CustomCard4} from "./CustomCard4";
 
+import {OfferCard} from "./OfferCard";
 
-
-let Information = () =>{
+let Offer = () =>{
     return(
-        <><div class="Aboutbutton" style={{ display: "flex", flexDirection: "column" }}>
+      <><div class="Aboutmid" style={{ display: "flex", flexDirection: "column" }}>
           <center>
-        <div style={{display:"flex",color:"#D97706", fontSize:"10px", fontWeight:"bold",justifyContent:"center"}}>
-        <h >Our Team</h>
+          <div style={{display:"flex",color:"#D97706", fontSize:"10px", fontWeight:"bold",justifyContent:"center"}}>
+        <h >Our Services</h>
         </div>
           <div style={{display:"flex",color:"black", fontSize:"30px", fontWeight:"bold",justifyContent:"center"}}>
-        <h >Our Awesome Team
-</h>
+        <h >What we offer</h>
         </div>
         <div style={{display:"flex",color:"gray",fontSize:"20px",justifyContent:"center"}}>
-        <h>Why are we doing this
-</h></div>
+        <h>What we offer</h></div>
         <div style={{display:"flex",color:"gray",fontSize:"15px",justifyContent:"center"}}>
-        <p>We want to be the small drops to form the warm ocean
-
-</p></div>
+        <p>enjoy and protect a peaceful environment for sharing feelings</p></div>
         </center>
       </div><div class="cards" >
       <div className="flex" style={{flexDirection:"row", justifyContent:"center", margin:"30px"}}>
         
-      <CustomCard1 />
+      <OfferCard />
     </div>
 
         </div></>
-
     )
 }
-export default Information;
+export default Offer;
