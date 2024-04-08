@@ -12,6 +12,6 @@ export const OfferCard = () => (
       <div>{ContentOffer.p1}</div>
       <div>{ContentOffer.p2}</div>
     </div>
-  </Card><Spacer x={4} /></div>
+  </Card><Spacer x={4} /></div> 
 
 );
