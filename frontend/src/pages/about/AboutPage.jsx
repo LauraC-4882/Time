@@ -6,8 +6,6 @@ import {
   Link,
 } from "react-router-dom";
 import {Image,Card, CardHeader, CardBody} from "@nextui-org/react";
-import Content from '../about/Content';
-
 import Offer from "./Offer";
 import Information from "./Information";
 import about from "./About.css";

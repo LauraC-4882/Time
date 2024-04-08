@@ -1,9 +1,6 @@
 import {Image,Card, CardHeader, CardBody} from "@nextui-org/react";
 import {Spacer} from "@nextui-org/react";
-import {CustomCard3} from "./CustomCard3";
-import {CustomCard1} from "./CustomCard1";
-import {CustomCard2} from "./CustomCard2";
-import {CustomCard4} from "./CustomCard4";
+import {InfoCard} from "./InfoCard";
 
 
 
@@ -29,7 +26,7 @@ let Information = () =>{
       </div><div class="cards" >
       <div className="flex" style={{flexDirection:"row", justifyContent:"center", margin:"30px"}}>
         
-      <CustomCard1 />
+      <InfoCard />
     </div>
 
         </div></>

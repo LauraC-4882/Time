@@ -1,7 +1,7 @@
 import {Image,Card, CardHeader, CardBody} from "@nextui-org/react";
 import {Spacer} from "@nextui-org/react";
 
-import {CustomCard} from "./CustomCard";
+import {OfferCard} from "./OfferCard";
 
 let Offer = () =>{
     return(
@@ -21,7 +21,7 @@ let Offer = () =>{
       </div><div class="cards" >
       <div className="flex" style={{flexDirection:"row", justifyContent:"center", margin:"30px"}}>
         
-      <CustomCard />
+      <OfferCard />
     </div>
 
         </div></>
