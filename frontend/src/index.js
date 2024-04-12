@@ -1,16 +1,13 @@
-import React, { Children } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import App from "./App";
 import "./index.css";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import AboutPage from "./pages/about/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/home/Home";
 import LetterPage from "./pages/LetterPage";
 
-import AboutPage from "./pages/AboutPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,18 +16,17 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />
+        element: <Home />,
       },
       {
         path: "/letters",
-        element: <LetterPage />
+        element: <LetterPage />,
       },
       {
         path: "/about",
-        element: <AboutPage />
-      }
-
-    ]
+        element: <AboutPage />,
+      },
+    ],
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
