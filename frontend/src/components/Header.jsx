@@ -1,35 +1,85 @@
-import { Badge, Avatar } from "@nextui-org/react";
-import { Outlet, Link } from "react-router-dom";
+import { Button, Card, Tooltip, Badge, Avatar, Navbar, NavbarBrand, NavbarContent, NavbarItem, Link } from "@nextui-org/react";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
+import HoveProfile from "./ProfileCard.jsx"
+import { Logo } from "./Logo.jsx";
+import './Header.css';
 
 
 let Header = () => {
-  return (<div style={{ height: "15vh", display: "flex", width: "100%", padding: "10px 80px", backgroundColor: "rgba(250, 233, 137, 1)" }}>
 
-    <div style={{ width: "10%", backgroundColor: "gray", marginRight: "20px" }}>HAHA</div>
-    <div style={{ width: "90%", display: "flex", flexDirection: "column" }}>
+  let navList = [
+    {
+      content: "HOME",
+      link: "/"
+    },
+    {
+      content: "LETTERS",
+      link: "/letters"
+    },
+    {
+      content: "ABOUT",
+      link: "/about"
+    }
+  ]
+  const [isHoveringA, setIsHoveringA] = useState(false);
+  const [isHoveringB, setIsHoveringB] = useState(false);
+  return (
 
-      <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", width: "40%" }}>
-          <Link to="/"><span>HOME</span></Link>
+    <Navbar className="navbar"
+      style={{ display: "flex", backgroundColor: "rgba(250, 233, 137, 0.8)" }}>
+      <NavbarBrand className="navbar-brand">
+        <Logo />
+        <p className="font-bold text-inherit">TIME</p>
+      </NavbarBrand>
+      <NavbarContent className="navbar-content" justify="center">
+        {navList.map(({ content, link }) => (
+          <NavbarItem key={content}> {/* Make sure to add a unique key prop here */}
+            <Link color="foreground" href={link}>{content}</Link>
+          </NavbarItem>
+        ))}
+      </NavbarContent>
 
-          <Link to="/letters"><span>LETTERS</span></Link>
+      <NavbarContent justify="end">
 
-          <Link to="/about"><span>ABOUT</span></Link>
-        </div>
-        <Badge content="5" color="primary">
-          <Avatar
-            radius="md"
-            size="md"
-            src="https://avatars.githubusercontent.com/u/90215880?s=400&u=24a47d8141c8729a19f8f84a42b1024ef7b9cf98&v=4"
-          />
-        </Badge>
-      </div>
-    </div>
-    <span style={{ position: "absolute", top: "6%", left: "30%", fontStyle: "italic", fontSize: "20px", color: "black" }}>“Enrich your life today. Yesterday is history，and tomorrow is mystery.”</span>
+        {/* Handles floating window logic */}
+        <NavbarItem className="profile-container"
+          onMouseEnter={() => setIsHoveringA(true)}
+          onMouseLeave={() => {
+            setTimeout(() => {
+              setIsHoveringA(false);
+            }, 500);
+
+          }}
+        >
+          <Link href="/profile">
+            <Badge content="5" color="primary" >
+              <Avatar
+                radius="md"
+                size="md"
+                src="https://avatars.githubusercontent.com/u/90215880?s=400&u=24a47d8141c8729a19f8f84a42b1024ef7b9cf98&v=4" />
+            </Badge>
+          </Link>
+          {(isHoveringA || isHoveringB) && (
+            <div
+              onMouseEnter={() => setIsHoveringB(true)}
+              onMouseLeave={() => setIsHoveringB(false)}
+              className="profile-card">
+              <HoveProfile></HoveProfile>
+            </div>
+          )}
+
+        </NavbarItem >
+      </NavbarContent>
 
 
-  </div>);
+    </Navbar>
+
+
+  );
 };
 
 
 export default Header;
+
+
