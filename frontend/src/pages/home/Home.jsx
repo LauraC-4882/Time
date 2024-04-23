@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, Input } from "@nextui-org/react";
+import { Pagination, Button, Card, CardBody, Input } from "@nextui-org/react";
 import React, { useState } from "react";
 import { VscArrowSmallLeft, VscArrowSmallRight } from "react-icons/vsc";
 import { PostCard, PostCards } from "../../components/PostCardsComp";
@@ -13,7 +13,7 @@ const Home = () => {
     setOpenModal(false);
   };
   return (
-    <div style={{ display: "flex", flexDirection: "column", padding: "50px" }}>
+    <div style={{ display: "flex", flexDirection: "column", paddingLeft: "15%" }}>
       <div
         className="main-left"
         style={{
@@ -43,43 +43,39 @@ const Home = () => {
         </PostCards>
         <div
           style={{
+            marginLeft: "0%",
             display: "inherit",
             flexDirection: "row",
             justifyContent: "space-between",
           }}
         >
-          <PagingCard></PagingCard>
+
+          <Pagination
+            style={{
+              zIndex: 0,
+              width: "350px", height: "65px",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-around ",
+            }}
+            loop
+            isCompact
+            showControls
+            showShadow
+            color="secondary"
+          // page={page}
+          // total={pages}
+          // onChange={(page) => setPage(page)}
+          />
           <Button color="primary" onClick={handleOpenPost}>
             Write A New Post
           </Button>
+          <PostModal handleQuit={handleRequestQuitPost} isOpen={openModal}></PostModal>
         </div>
-        <PostModal handleQuit={handleRequestQuitPost} isOpen={openModal}></PostModal>
+
       </div>
     </div>
   );
 };
 
-let PagingCard = () => {
-  return (
-    <Card style={{ width: "350px", height: "65px" }}>
-      <CardBody
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around ",
-        }}
-      >
-        <Button isIconOnly>
-          <VscArrowSmallLeft style={{ width: "20px", height: "20px" }} />
-        </Button>
-        <Button isIconOnly>1</Button>
-        <Button isIconOnly>2</Button>
-        <Button isIconOnly>3</Button>
-        <Button isIconOnly>
-          <VscArrowSmallRight style={{ width: "20px", height: "20px" }} />
-        </Button>
-      </CardBody>
-    </Card>
-  );
-};
 export default Home;
