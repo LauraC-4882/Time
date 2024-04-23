@@ -22,7 +22,7 @@ export let LetterForm = ({handleQuit, isOpen}) => {
           marginTop:"10px"
         }}>
         <RadioGroup 
-      label="Are you writing the letter anonymously?" style={{fontSize: 14, fontWeight: 700, marginBottom: "10px",fontColor:"black"}}>
+      label="Are you writing the letter anonymously?" style={{fontSize: 14, fontWeight: 700, marginBottom: "10px"}}>
       <Radio value="yes">Yes</Radio>
       <Radio value="no">No</Radio>
     </RadioGroup>
