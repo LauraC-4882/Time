@@ -25,7 +25,7 @@ export default function Receive() {
             onSelectionChange={setValue}
       >
           {(receive) => <SelectItem key={receive.value}>{receive.label}</SelectItem>}
-      </Select><p style={{fontSize: 14, fontWeight: 700, marginBottom: "10px"}}>Receiver's {value}</p></>
+      </Select><p style={{fontSize: 14, fontWeight: 700, marginBottom: "10px", marginTop:"10px"}}>Receiver's {value}</p></>
 
       
   );
