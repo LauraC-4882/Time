@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@lexical/react": "^0.13.1",
+    "@nextui-org/card": "^2.0.24",
     "@nextui-org/react": "^2.2.9",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -22,7 +23,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "CHOKIDAR_USEPOLLING=true react-scripts start",
+    "start": "set CHOKIDAR_USEPOLLING=true&& react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
