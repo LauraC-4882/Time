@@ -18,11 +18,11 @@ export let LetterForm = ({handleQuit, isOpen}) => {
           flexDirection: "column",
           justifyContent: "space-around",
           padding: "40px",
-          marginBottom:"20px",
-          marginTop:"20px"
+          marginBottom:"10px",
+          marginTop:"10px"
         }}>
         <RadioGroup 
-      label="Are you writing the letter anonymously?" style={{fontSize: 14, fontWeight: 700, marginBottom: "10px"}}>
+      label="Are you writing the letter anonymously?" style={{fontSize: 14, fontWeight: 700, marginBottom: "10px",fontColor:"black"}}>
       <Radio value="yes">Yes</Radio>
       <Radio value="no">No</Radio>
     </RadioGroup>
@@ -46,11 +46,11 @@ export let LetterForm = ({handleQuit, isOpen}) => {
         <Input type="address" label="Receiver address" />   
         <p style={{fontSize: 14, fontWeight: 700, marginBottom: "10px"}}>Your contact information</p>
         <Input type="email" label="Email/phone" />   
-        <p style={{fontSize: 14, fontWeight: 700, marginBottom: "10px"}}>Main letter</p>
+        <p style={{fontSize: 14, fontWeight: 700, marginBottom: "20px"}}>Main letter</p>
         <TextEditor></TextEditor>
 
         <div
-          style={{display: "flex", width: "inherit", justifyContent: "flex-end", marginTop: "20px"}}
+          style={{display: "flex", width: "inherit", justifyContent: "flex-end", marginTop: "10px"}}
         >
           <div style={{display: "flex", width: "35%", justifyContent: "space-between"}}>
             <Button color="primary" radius="full">
