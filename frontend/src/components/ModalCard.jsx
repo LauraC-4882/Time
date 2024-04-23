@@ -1,7 +1,7 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 
 import Modal from "react-modal";
-export const ModalCard = ({isOpen, handleQuit, children}) => {
+export const ModalCard = ({ isOpen, handleQuit, children }) => {
   isOpen = isOpen ? true : false;
   useEffect(() => {
     Modal.setAppElement("#modal");
