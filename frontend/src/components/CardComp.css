@@ -1,0 +1,28 @@
+.profile-container {
+    position: relative;
+    /* Other styles */
+}
+
+.profile-card {
+    position: absolute;
+    top: 100%;
+    /* Position below the hover trigger */
+    left: 0;
+    z-index: 999;
+    /* Make sure it's above other content */
+    width: 300px;
+    /* Set a width for the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    transform: translate(0%);
+    /* Add other styles for padding, border, etc. */
+}
+
+/* Add styles for .profile-card-header, .profile-card-body, .profile-card-footer */
+.stable-avatar {
+    /* Assuming you're using flexbox, this would ensure that the avatar does not shift */
+    flex-shrink: 0;
+    /* Prevents the avatar from shrinking */
+    flex-grow: 0;
+    /* Prevents the avatar from growing */
+}
