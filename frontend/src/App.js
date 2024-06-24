@@ -1,3 +1,4 @@
+
 import {NextUIProvider} from "@nextui-org/react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -10,11 +11,12 @@ function App() {
         style={{
           height: "100%",
           background: "linear-gradient(rgb(246,237,189), rgba(246,237,189, 0))",
+          display:"flex",
+          flexDirection:"column"
         }}
       >
-        <div style={{height: "80vh"}}>
-          <Outlet />
-        </div>
+        <Outlet />
+
         <Footer></Footer>
       </div>
       <div id="modal"></div>
