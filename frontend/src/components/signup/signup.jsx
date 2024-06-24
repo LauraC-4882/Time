@@ -1,7 +1,8 @@
 // Filename - Form.js
-import React, { useEffect } from "react";
-import { useState } from "react";
-import Modal from "react-modal";
+import React from "react";
+import { NextUIProvider,Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Checkbox, Input, Link } from "@nextui-org/react";
+import {Mail} from './Mail.jsx';
+import {Lock} from './Lock.jsx';
 
 
 const pageStyle={
@@ -18,28 +19,65 @@ const pageStyle={
 }
 //bind with modal in div
 export default function Signup() {
-	// States for registration
-    const[modalIsOpen, setIsOpen] = React.useState(false);
-    function open(){
-        setIsOpen(true);
-    }
-    function close(){
-        setIsOpen(false);
-    }
-    //after modal appear
-    useEffect(()=>{Modal.setAppElement("#modal");},[]);
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
     return (
-        <div id="modal">
-            <Modal
-            isOpen ={modalIsOpen}
-            onRequestClose={close}
-            >
-            <p>signup</p>
-            </Modal>
-            <Button onClick={open}>signup</Button>
-
-        </div>
+        <>
+          <Button onPress={onOpen} color="primary">Sign up/Log in</Button>
+          <Modal 
+            isOpen={isOpen} 
+            onOpenChange={onOpenChange}
+            placement="top-center"
+          >
+            <ModalContent>
+              {(onClose) => (
+                <>
+                  <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
+                  <ModalBody>
+                    <Input
+                      autoFocus
+                      endContent={
+                        <Mail className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                      }
+                      label="Email"
+                      placeholder="Enter your email"
+                      variant="bordered"
+                    />
+                    <Input
+                      endContent={
+                        <Lock className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                      }
+                      label="Password"
+                      placeholder="Enter your password"
+                      type="password"
+                      variant="bordered"
+                    />
+                    <div className="flex py-2 px-1 justify-between">
+                      <Checkbox
+                        classNames={{
+                          label: "text-small",
+                        }}
+                      >
+                        Remember me
+                      </Checkbox>
+                      <Link color="primary" href="#" size="sm">
+                        Forgot password?
+                      </Link>
+                    </div>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="danger" variant="flat" onPress={onClose}>
+                      Close
+                    </Button>
+                    <Button color="primary" onPress={onClose}>
+                      Sign in
+                    </Button>
+                  </ModalFooter>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
+        </>
     )
 }
 
