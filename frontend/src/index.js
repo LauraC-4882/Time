@@ -6,7 +6,7 @@ import "./index.css";
 import AboutPage from "./pages/about/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/home/Home";
-import LetterPage from "./pages/LetterPage";
+import LetterPage from "./pages/letter/LetterPage";
 
 const router = createBrowserRouter([
   {
