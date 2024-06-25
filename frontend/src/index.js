@@ -7,6 +7,8 @@ import AboutPage from "./pages/about/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/home/Home";
 import LetterPage from "./pages/letter/LetterPage";
+//init firebase
+import "./firebase/index.ts";
 
 const router = createBrowserRouter([
   {
