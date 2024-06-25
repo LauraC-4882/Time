@@ -1,6 +1,5 @@
 // Filename - Form.js
-import React from "react";
-import {useState} from "react";
+import React, {useState} from "react";
 import {
   NextUIProvider,
   Modal,
@@ -10,88 +9,59 @@ import {
   ModalFooter,
   Button,
   useDisclosure,
-  Checkbox,
   Input,
-  Link,
 } from "@nextui-org/react";
 import {Mail} from "./Mail.jsx";
 import {Lock} from "./Lock.jsx";
 import {validateEmail} from "../../utils/strings.ts";
-import {getAuth, createUserWithEmailAndPassword} from "firebase/auth";
 import {signUpUser} from "../../api/loginUser.js";
-const pageStyle = {
-  content: {
-    top: "50%",
-    button: "50%",
-    right: "50%",
-    left: "50%",
-    padding: "20px",
-    position: "fixed",
-    marginRight: "50%",
-    transform: "translate(-40%,-40%)",
-  },
-};
-//bind with modal in div
+
 export default function Signup() {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [password, setPassword] = useState("");
-  const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [repassword, setRepassword] = useState("");
+  const [isRepasswordValid, setIsRepasswordValid] = useState(true);
 
   const [isPasswordHasUpperCase, setIsPasswordHasUpperCase] = useState(true);
   const [isPasswordHasLowerCase, setIsPasswordHasLowerCase] = useState(true);
   const [isPasswordHasDigit, setIsPasswordHasDigit] = useState(true);
+  const [isPasswordValid, setIsPasswordValid] = useState(true);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    setIsEmailValid(true);
+    setIsEmailValid(validateEmail(e.target.value));
   };
+
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    setIsPasswordValid(true);
+    validatePassword(e.target.value);
+    setIsRepasswordValid(e.target.value === repassword);
   };
+
   const handleRepasswordChange = (e) => {
     setRepassword(e.target.value);
+    setIsRepasswordValid(e.target.value === password);
   };
 
-  const handleSignup = (e) => {
-    //check if email is valid
-    if (!validateEmail(email)) {
-      alert("Invalid email");
-      setIsEmailValid(false);
-      return;
-    }
-    //check if password is valid
-    if (password.length < 8) {
-      alert("Password must be at least 8 characters long");
-      setIsPasswordValid(false);
-      return;
-    }
-    const hasUpperCase = /[A-Z]/.test(password);
-    if (!hasUpperCase) {
-      alert("Password must contain at least one uppercase letter");
-      setIsPasswordHasUpperCase(false);
-      return;
-    }
-    const hasLowerCase = /[a-z]/.test(password);
-    if (!hasLowerCase) {
-      alert("Password must contain at least one lowercase letter");
-      setIsPasswordHasLowerCase(false);
-      return;
-    }
-    const hasDigit = /[0-9]/.test(password);
-    if (!hasDigit) {
-      alert("Password must contain at least one digit");
-      setIsPasswordHasDigit(false);
-      return;
-    }
+  const validatePassword = (password) => {
+    setIsPasswordValid(password.length >= 8);
+    setIsPasswordHasUpperCase(/[A-Z]/.test(password));
+    setIsPasswordHasLowerCase(/[a-z]/.test(password));
+    setIsPasswordHasDigit(/[0-9]/.test(password));
+  };
 
-    //check if password is the same as repassword
-    if (password !== repassword) {
-      alert("Password and re-entered password do not match");
+  const handleSignup = () => {
+    if (
+      !isEmailValid ||
+      !isPasswordValid ||
+      !isPasswordHasUpperCase ||
+      !isPasswordHasLowerCase ||
+      !isPasswordHasDigit ||
+      !isRepasswordValid
+    ) {
       return;
     }
 
@@ -117,6 +87,9 @@ export default function Signup() {
                   label="Email"
                   placeholder="Enter your email"
                   variant="bordered"
+                  value={email}
+                  color={!isEmailValid ? "danger" : "primary"}
+                  errorMessage={!isEmailValid ? "Please enter a valid email" : ""}
                   onChange={handleEmailChange}
                 />
                 <Input
@@ -127,29 +100,52 @@ export default function Signup() {
                   placeholder="Enter your password"
                   type="password"
                   variant="bordered"
+                  value={password}
+                  color={
+                    !isPasswordValid ||
+                    !isPasswordHasUpperCase ||
+                    !isPasswordHasLowerCase ||
+                    !isPasswordHasDigit
+                      ? "danger"
+                      : "primary"
+                  }
+                  errorMessage={
+                    !isPasswordValid
+                      ? "Password must be at least 8 characters long"
+                      : !isPasswordHasUpperCase
+                      ? "Password must contain at least one uppercase letter"
+                      : !isPasswordHasLowerCase
+                      ? "Password must contain at least one lowercase letter"
+                      : !isPasswordHasDigit
+                      ? "Password must contain at least one digit"
+                      : ""
+                  }
                   onChange={handlePasswordChange}
                 />
                 <Input
                   endContent={
                     <Lock className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
                   }
-                  label="Password"
+                  label="Re-enter Password"
                   placeholder="Re-enter your password"
                   type="password"
                   variant="bordered"
+                  value={repassword}
+                  color={!isRepasswordValid ? "danger" : "primary"}
+                  errorMessage={!isRepasswordValid ? "Passwords do not match" : ""}
                   onChange={handleRepasswordChange}
                 />
               </ModalBody>
               <ModalFooter>
                 <Button
-                  color="danger"
+                  color="secondary"
                   variant="flat"
                   onPress={onClose}
                   style={{marginRight: "20px"}}
                 >
                   Close
                 </Button>
-                <Button color="primary" onPress={onClose} onClick={handleSignup}>
+                <Button color="primary" onPress={handleSignup}>
                   Sign up
                 </Button>
               </ModalFooter>
