@@ -1,5 +1,6 @@
 import { Badge, Avatar } from "@nextui-org/react";
 import { Outlet, Link } from "react-router-dom";
+import SignupPopup from './Signup/Signup';
 
 
 let Header = () => {
@@ -17,6 +18,8 @@ let Header = () => {
           <Link to="/about"><span>ABOUT</span></Link>
         </div>
         <Badge content="5" color="primary">
+        <SignupPopup></SignupPopup>
+
           <Avatar
             radius="md"
             size="md"

@@ -1,9 +1,11 @@
+import { NextUIProvider} from "@nextui-org/react";
+import { Outlet } from "react-router-dom";
 
-import {NextUIProvider} from "@nextui-org/react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import {Outlet} from "react-router-dom";
 function App() {
+
   return (
     <NextUIProvider>
       <Header></Header>
