@@ -5,6 +5,7 @@ import {getAuth, onAuthStateChanged} from "firebase/auth";
 import {getFirestore, doc, getDoc} from "firebase/firestore";
 import Cad from "../../utils/post";
 import EditCard from "../../components/EditCard.jsx";
+import People from "../../utils/PeopleList.jsx";
 
 export default function Profile() {
   const [isEditing, setIsEditing] = useState(false);
@@ -16,17 +17,13 @@ export default function Profile() {
     const auth = getAuth();
     const db = getFirestore();
 
-    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      if (firebaseUser) {
-        // User is signed in, fetch user data from Firestore
-        const userDoc = doc(db, "users", firebaseUser.uid);
-        const userSnapshot = await getDoc(userDoc);
-
-        if (userSnapshot.exists()) {
-          setUser(userSnapshot.data());
-        } else {
-          console.error("No such user document!");
-        }
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        setUser({
+          name: user.displayName ? user.displayName : "Jackson",
+          description: "Frontend developer and UI/UX enthusiast. Join me on this coding adventure!",
+          avatar: "/avatars/avatar-1.png",
+        });
       } else {
         // User is signed out, redirect to error page
         navigate("/error");
