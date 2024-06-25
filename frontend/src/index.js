@@ -9,6 +9,7 @@ import Home from "./pages/home/Home";
 import LetterPage from "./pages/letter/LetterPage";
 
 import "./firebase/index.ts";
+import Profile from "./pages/profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <AboutPage />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },
