@@ -17,7 +17,7 @@ import "./Header.css";
 
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 import Login from "./Login/Login.jsx";
-import Signup from "./Signup/sign.jsx";
+import Signup from "./sign/sign.jsx";
 let Header = () => {
   let navList = [
     {
