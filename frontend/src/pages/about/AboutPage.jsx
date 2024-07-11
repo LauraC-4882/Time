@@ -4,37 +4,6 @@ import Offer from "./Offer";
 export const AboutPage = () => {
   return (
     <div class="about" style={{backgroundColor: "#F6EDBD"}}>
-      <Navbar style={{backgroundColor: "#FAE989"}}>
-        <div style={{display: "flex"}}>
-          <div style={{display: "inherit"}}>
-            <NavbarBrand>
-              {/* <TimeLogo /> */}
-              <p className="name">TIME</p>
-            </NavbarBrand>
-          </div>
-          {/* nav bar header */}
-          <div style={{display: "flex", flexDirection: "column"}}>
-            <NavbarContent className="nav" justify="center" style={{padding: "10px"}}>
-              <NavbarItem>
-                <a href="#">About</a>
-              </NavbarItem>
-              <NavbarItem>
-                <a href="/">Main</a>
-              </NavbarItem>
-              <NavbarItem>
-                <a href="#">Letters</a>
-              </NavbarItem>
-
-              <div>some changing</div>
-            </NavbarContent>
-          </div>
-          <NavbarContent class="dropProfile">
-            <a href="/profile">
-              <Avatar name="JC"></Avatar>
-            </a>
-          </NavbarContent>
-        </div>
-      </Navbar>
       <center>
         <div
           class="Abouttop"

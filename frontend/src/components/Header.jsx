@@ -52,7 +52,9 @@ let Header = () => {
       style={{display: "flex", backgroundColor: "rgba(250, 233, 137, 0.8)"}}
     >
       <NavbarBrand className="navbar-brand">
-        <p className="font-bold text-inherit">TIME</p>
+        <a href=".">
+          <p className="font-bold text-inherit">TIME</p>
+        </a>
       </NavbarBrand>
       <NavbarContent className="navbar-content" justify="center">
         {navList.map(({content, link}) => (
