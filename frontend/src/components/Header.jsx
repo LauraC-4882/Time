@@ -15,9 +15,10 @@ import {Outlet} from "react-router-dom";
 import {ProfileCard} from "./ProfileCard.tsx";
 import "./Header.css";
 
-import {getAuth, onAuthStateChanged} from "firebase/auth";
+import {onAuthStateChanged} from "firebase/auth";
 import Login from "./Login/Login.jsx";
 import Signup from "./sign/sign.jsx";
+import {auth} from "../firebase/index.ts";
 let Header = () => {
   let navList = [
     {
@@ -37,7 +38,6 @@ let Header = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);

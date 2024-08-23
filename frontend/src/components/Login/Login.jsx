@@ -1,5 +1,5 @@
 // Filename - Form.js
-import React from "react";
+import React, {useState} from "react";
 import {
   NextUIProvider,
   Modal,
@@ -15,6 +15,7 @@ import {
 } from "@nextui-org/react";
 import {Mail} from "./Mail.jsx";
 import {Lock} from "./Lock.jsx";
+import {loginUserWithPassword, signUpUser} from "../../api/loginUser.js";
 
 const pageStyle = {
   content: {
@@ -31,6 +32,28 @@ const pageStyle = {
 //bind with modal in div
 export default function Login() {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isInvalid, setIsInvalid] = useState(false);
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    if (isInvalid) {
+      setIsInvalid(false);
+    }
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    if (isInvalid) {
+      setIsInvalid(false);
+    }
+  };
+
+  const handleLogin = () => {
+    if (!loginUserWithPassword(email, password)) {
+      setIsInvalid(true);
+    }
+  };
 
   return (
     <>
@@ -51,6 +74,8 @@ export default function Login() {
                   label="Email"
                   placeholder="Enter your email"
                   variant="bordered"
+                  onChange={handleEmailChange}
+                  isInvalid={isInvalid}
                 />
                 <Input
                   endContent={
@@ -60,6 +85,9 @@ export default function Login() {
                   placeholder="Enter your password"
                   type="password"
                   variant="bordered"
+                  onChange={handlePasswordChange}
+                  isInvalid={isInvalid}
+                  errorMessage="Invalid email or password"
                 />
                 <div className="flex py-2 px-1 justify-between">
                   <Checkbox
@@ -78,7 +106,7 @@ export default function Login() {
                 <Button color="danger" variant="flat" onPress={onClose}>
                   Close
                 </Button>
-                <Button color="primary" onPress={onClose}>
+                <Button color="primary" onPress={handleLogin}>
                   Sign in
                 </Button>
               </ModalFooter>

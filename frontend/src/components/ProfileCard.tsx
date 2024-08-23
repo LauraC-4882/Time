@@ -2,10 +2,10 @@ import React from "react";
 import {Card, CardHeader, Avatar} from "@nextui-org/react";
 import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell} from "@nextui-org/react";
 import {Listbox, ListboxItem} from "@nextui-org/react";
+import {signOut} from "firebase/auth";
+import {auth} from "../firebase/index.ts";
 
-// Profile card component
 export const ProfileCard = ({user}) => {
-  // Column definitions for the table
   const columns = [
     {
       key: "name",
@@ -21,27 +21,6 @@ export const ProfileCard = ({user}) => {
     },
   ];
 
-  // Actions for the listbox
-  const items = [
-    {
-      key: "new",
-      label: "New file",
-    },
-    {
-      key: "copy",
-      label: "Copy link",
-    },
-    {
-      key: "edit",
-      label: "Edit file",
-    },
-    {
-      key: "delete",
-      label: "Delete file",
-    },
-  ];
-
-  // Placeholder data for the table (this should be replaced with real data)
   const rowData = [
     {
       name: user.name,
@@ -61,7 +40,6 @@ export const ProfileCard = ({user}) => {
           </div>
         </div>
       </CardHeader>
-
       <Table aria-label="Example table with dynamic content">
         <TableHeader columns={columns}>
           {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
@@ -76,14 +54,19 @@ export const ProfileCard = ({user}) => {
           ))}
         </TableBody>
       </Table>
-
-      {/* Listbox with actions */}
-      <Listbox items={items} aria-label="Dynamic Actions" onAction={(key) => alert(key)}>
-        {(item) => (
-          <ListboxItem key={item.key} color={item.key === "delete" ? "danger" : "default"}>
-            {item.label}
-          </ListboxItem>
-        )}
+      <Listbox aria-label="Dynamic Actions" onAction={(key) => alert(key)}>
+        <ListboxItem key="new">New file</ListboxItem>
+        <ListboxItem key="copy">Copy link</ListboxItem>
+        <ListboxItem key="edit">Edit file</ListboxItem>
+        <ListboxItem
+          key="signout"
+          color="danger"
+          onClick={() => {
+            signOut(auth);
+          }}
+        >
+          Sign out
+        </ListboxItem>
       </Listbox>
     </Card>
   );

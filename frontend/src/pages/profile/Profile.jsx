@@ -1,11 +1,12 @@
 import {useEffect, useState} from "react";
 import {Tabs, Tab, Card, User, CardBody, Button} from "@nextui-org/react";
 import {useNavigate} from "react-router-dom";
-import {getAuth, onAuthStateChanged} from "firebase/auth";
+import {onAuthStateChanged} from "firebase/auth";
 import {getFirestore, doc, getDoc} from "firebase/firestore";
 import Cad from "../../utils/post";
 import EditCard from "../../components/EditCard.jsx";
 import People from "../../utils/PeopleList.jsx";
+import {auth} from "../../firebase/index.ts";
 
 export default function Profile() {
   const [isEditing, setIsEditing] = useState(false);
@@ -14,7 +15,6 @@ export default function Profile() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const auth = getAuth();
     const db = getFirestore();
 
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
