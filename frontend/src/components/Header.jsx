@@ -42,6 +42,7 @@ let Header = () => {
       if (user) {
         setUser(user);
       } else {
+        setUser(null);
       }
     });
   }, []);
@@ -79,11 +80,7 @@ let Header = () => {
           >
             <Link href="/profile">
               <Badge content="5" color="primary">
-                <Avatar
-                  radius="md"
-                  size="md"
-                  src="https://avatars.githubusercontent.com/u/90215880?s=400&u=24a47d8141c8729a19f8f84a42b1024ef7b9cf98&v=4"
-                />
+                <Avatar radius="md" size="md" src={user.photoURL} />
               </Badge>
             </Link>
             {isHovering && (
