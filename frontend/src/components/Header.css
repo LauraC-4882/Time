@@ -1,62 +1,41 @@
 .profile-container {
   position: relative;
-  /* Other styles */
 }
 
 .profile-card {
   position: absolute;
   top: 100%;
-  /* Position below the hover trigger */
   left: 0;
   z-index: 990;
-  /* Make sure it's above other content */
   width: 300px;
-  /* Set a width for the card */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: white;
   transform: translate(-100%);
-  /* Add other styles for padding, border, etc. */
 }
 
-/* Add styles for .profile-card-header, .profile-card-body, .profile-card-footer */
 .stable-avatar {
-  /* Assuming you're using flexbox, this would ensure that the avatar does not shift */
   flex-shrink: 0;
-  /* Prevents the avatar from shrinking */
   flex-grow: 0;
-  /* Prevents the avatar from growing */
 }
 
 .navbar {
   display: flex;
-  /* 保持整体导航栏为 flex 容器 */
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
-  /* 垂直居中所有子项 */
   background-color: rgba(250, 233, 137, 0.8);
-  /* 背景颜色，已在style中设置 */
 }
 
 .navbar-brand,
 .navbar-content {
   display: flex;
-  /* 确保这些部分仍然是flex布局 */
   align-items: center;
-  /* 垂直居中 */
 }
 
 .navbar-quote {
   flex-grow: 1;
-  /* 让这部分填充剩余空间 */
   display: flex;
-  /* 启用flex布局 */
   flex-direction: column;
-  /* 子元素垂直排列 */
   justify-content: center;
-  /* 水平居中 */
   text-align: center;
-  /* 文本居中 */
   margin-left: auto;
-  /* 将此内容推向右边 */
 }

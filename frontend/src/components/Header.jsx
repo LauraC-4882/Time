@@ -10,15 +10,15 @@ import {
   NavbarItem,
   Link,
 } from "@nextui-org/react";
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import {Outlet} from "react-router-dom";
 import {ProfileCard} from "./ProfileCard.tsx";
 import "./Header.css";
-
 import {onAuthStateChanged} from "firebase/auth";
 import Login from "./Login/Login.jsx";
 import Signup from "./sign/sign.jsx";
 import {auth} from "../firebase/index.ts";
+
 let Header = () => {
   let navList = [
     {
@@ -34,8 +34,10 @@ let Header = () => {
       link: "/about",
     },
   ];
+
   const [isHovering, setIsHovering] = useState(false);
   const [user, setUser] = useState(null);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -46,6 +48,17 @@ let Header = () => {
       }
     });
   }, []);
+
+  const handleMouseEnter = () => {
+    clearTimeout(timeoutRef.current);
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsHovering(false);
+    }, 300); // 300ms delay before hiding the profile card
+  };
 
   return (
     <Navbar
@@ -66,32 +79,21 @@ let Header = () => {
           </NavbarItem>
         ))}
       </NavbarContent>
-
       <NavbarContent justify="end">
         {user ? (
-          <NavbarItem
-            className="profile-container"
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => {
-              setTimeout(() => {
-                setIsHovering(false);
-              }, 300);
-            }}
-          >
-            <Link href="/profile">
-              <Badge content="5" color="primary">
-                <Avatar radius="md" size="md" src={user.photoURL} />
-              </Badge>
-            </Link>
-            {isHovering && (
-              <div
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
-                className="profile-card"
-              >
-                <ProfileCard user={user} />
-              </div>
-            )}
+          <NavbarItem className="profile-container">
+            <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+              <Link href="/profile">
+                <Badge content="5" color="primary">
+                  <Avatar radius="md" size="md" src={user.photoURL} />
+                </Badge>
+              </Link>
+              {isHovering && (
+                <div className="profile-card">
+                  <ProfileCard user={user} />
+                </div>
+              )}
+            </div>
           </NavbarItem>
         ) : (
           <>
