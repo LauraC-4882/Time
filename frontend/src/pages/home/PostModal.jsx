@@ -1,6 +1,6 @@
 import {Button, Divider, Input} from "@nextui-org/react";
 import React, {useRef} from "react";
-import TextEditor from "../../components/Editor/RichTextEditor";
+import TextEditor from "../../components/editor/RichTextEditor";
 import ModalCard from "../../components/ModalCard";
 
 export let PostModal = ({handleQuit, isOpen}) => {

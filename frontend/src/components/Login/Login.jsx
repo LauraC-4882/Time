@@ -13,9 +13,8 @@ import {
   Input,
   Link,
 } from "@nextui-org/react";
-import {Mail} from "./Mail.jsx";
-import {Lock} from "./Lock.jsx";
-import {loginUser, registerUser} from "../../api/auth.ts";
+import {Mail} from "./Mail";
+import {Lock} from "./Lock";
 
 const pageStyle = {
   content: {

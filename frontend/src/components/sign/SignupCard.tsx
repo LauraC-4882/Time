@@ -17,7 +17,7 @@ import {Lock} from "./Lock";
 import {PasswordValidationResult, validateEmail, validatePassword} from "../../utils/strings";
 import {registerUser} from "../../api/auth";
 
-export default function Signup() {
+export default function SignupCard() {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   const [email, setEmail] = useState<string>("");

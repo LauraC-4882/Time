@@ -15,8 +15,8 @@ import {Outlet} from "react-router-dom";
 import {ProfileCard} from "./ProfileCard";
 import "./Header.css";
 import {onAuthStateChanged, User} from "firebase/auth";
-import Login from "./Login/Login";
-import Signup from "./sign/sign";
+import Login from "./login/Login";
+import SignupCard from "./sign/SignupCard";
 import {auth} from "../firebase/index";
 import {getUserInfo} from "../service/userService";
 import {UserInfo} from "../model/userModel";
@@ -114,7 +114,7 @@ const Header: React.FC = () => {
         ) : (
           <>
             <Login />
-            <Signup />
+            <SignupCard />
           </>
         )}
       </NavbarContent>
