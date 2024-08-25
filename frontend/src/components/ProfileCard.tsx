@@ -3,18 +3,29 @@ import {Card, CardHeader, Avatar} from "@nextui-org/react";
 import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell} from "@nextui-org/react";
 import {Listbox, ListboxItem} from "@nextui-org/react";
 import {onAuthStateChanged, signOut, User} from "firebase/auth";
-import {auth} from "../firebase/index.ts";
+import {auth} from "../firebase";
+import {UserInfo} from "../model/userModel";
+import {getUserInfo} from "../service/userService";
 
 export const ProfileCard = () => {
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<UserInfo | null>(null);
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        getUserInfo(authUser.uid).then((userInfo) => {
+          console.log("userInfo", userInfo);
+          if (userInfo) {
+            setUser(userInfo);
+          } else {
+            setUser(null);
+          }
+        });
       } else {
-        setUser(undefined);
+        setUser(null);
       }
     });
+
+    return () => unsubscribe();
   }, []);
 
   return (
@@ -23,7 +34,6 @@ export const ProfileCard = () => {
         <div className="flex gap-5">
           <Avatar
             isBordered
-            radius="full"
             size="md"
             src={user ? (user.photoURL ? user.photoURL : "") : undefined}
           />
@@ -31,28 +41,16 @@ export const ProfileCard = () => {
             <h4 className="text-small font-semibold leading-none text-default-600">
               {user?.displayName}
             </h4>
-            <h5 className="text-small tracking-tight text-default-400">@{"test"}</h5>
+            <h5 className="text-small tracking-tight text-default-400">@{user?.email}</h5>
           </div>
         </div>
       </CardHeader>
-      <Table aria-label="User information table">
-        <TableHeader>
-          <TableColumn>NAME</TableColumn>
-          <TableColumn>ROLE</TableColumn>
-          <TableColumn>STATUS</TableColumn>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell>{user?.displayName}</TableCell>
-            <TableCell>{user?.emailVerified}</TableCell>
-            <TableCell>{user?.emailVerified}</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-      <Listbox aria-label="Dynamic Actions" onAction={(key) => alert(key)}>
+      <Listbox aria-label="Dynamic Actions">
         <ListboxItem key="new">New file</ListboxItem>
         <ListboxItem key="copy">Copy link</ListboxItem>
-        <ListboxItem key="edit">Edit file</ListboxItem>
+        <ListboxItem key="edit" href="/profile/settings">
+          Edit file
+        </ListboxItem>
         <ListboxItem
           key="signout"
           color="danger"

@@ -15,8 +15,6 @@ export default function Profile() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const db = getFirestore();
-
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setUser({

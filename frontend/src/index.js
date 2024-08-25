@@ -12,6 +12,7 @@ import "./firebase/index.ts";
 
 import "./firebase/index.ts";
 import Profile from "./pages/profile/Profile";
+import ProfileSetting from "./pages/setting/Setting.jsx";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
         path: "/profile",
         element: <Profile />,
       },
+      {path: "/profile/settings", element: <ProfileSetting />},
     ],
   },
 ]);

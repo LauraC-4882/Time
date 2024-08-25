@@ -1,3 +1,4 @@
+import React, {useEffect, useState, useRef} from "react";
 import {
   Button,
   Card,
@@ -10,17 +11,23 @@ import {
   NavbarItem,
   Link,
 } from "@nextui-org/react";
-import {useEffect, useState, useRef} from "react";
 import {Outlet} from "react-router-dom";
-import {ProfileCard} from "./ProfileCard.tsx";
+import {ProfileCard} from "./ProfileCard";
 import "./Header.css";
-import {onAuthStateChanged} from "firebase/auth";
-import Login from "./Login/Login.jsx";
-import Signup from "./sign/sign.jsx";
-import {auth} from "../firebase/index.ts";
+import {onAuthStateChanged, User} from "firebase/auth";
+import Login from "./Login/Login";
+import Signup from "./sign/sign";
+import {auth} from "../firebase/index";
+import {getUserInfo} from "../service/userService";
+import {UserInfo} from "../model/userModel";
 
-let Header = () => {
-  let navList = [
+interface NavItem {
+  content: string;
+  link: string;
+}
+
+const Header: React.FC = () => {
+  const navList: NavItem[] = [
     {
       content: "HOME",
       link: "/",
@@ -35,29 +42,38 @@ let Header = () => {
     },
   ];
 
-  const [isHovering, setIsHovering] = useState(false);
-  const [user, setUser] = useState(null);
-  const timeoutRef = useRef(null);
-
+  const [isHovering, setIsHovering] = useState<boolean>(false);
+  const [user, setUser] = useState<UserInfo | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        getUserInfo(authUser.uid).then((userInfo) => {
+          if (userInfo) {
+            setUser(userInfo);
+          } else {
+            setUser(null);
+          }
+        });
       } else {
         setUser(null);
       }
     });
+
+    return () => unsubscribe();
   }, []);
 
   const handleMouseEnter = () => {
-    clearTimeout(timeoutRef.current);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
     setIsHovering(true);
   };
 
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setIsHovering(false);
-    }, 300); // 300ms delay before hiding the profile card
+    }, 300);
   };
 
   return (
@@ -85,12 +101,12 @@ let Header = () => {
             <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
               <Link href="/profile">
                 <Badge content="5" color="primary">
-                  <Avatar radius="md" size="md" src={user.photoURL} />
+                  <Avatar radius="md" size="md" src={user.photoURL || undefined} />
                 </Badge>
               </Link>
               {isHovering && (
                 <div className="profile-card">
-                  <ProfileCard user={user} />
+                  <ProfileCard />
                 </div>
               )}
             </div>

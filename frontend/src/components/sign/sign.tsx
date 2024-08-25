@@ -1,5 +1,6 @@
-// Filename - Form.js
-import React, {useState} from "react";
+// src/components/Form.tsx
+
+import React, {useState, useEffect} from "react";
 import {
   NextUIProvider,
   Modal,
@@ -11,61 +12,54 @@ import {
   useDisclosure,
   Input,
 } from "@nextui-org/react";
-import {Mail} from "./Mail.jsx";
-import {Lock} from "./Lock.jsx";
-import {validateEmail} from "../../utils/strings.ts";
-import {signUpUser} from "../../api/loginUser.js";
+import {Mail} from "./Mail";
+import {Lock} from "./Lock";
+import {PasswordValidationResult, validateEmail, validatePassword} from "../../utils/strings";
+import {registerUser} from "../../api/auth";
 
 export default function Signup() {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
-  const [email, setEmail] = useState("");
-  const [isEmailValid, setIsEmailValid] = useState(true);
-  const [password, setPassword] = useState("");
-  const [repassword, setRepassword] = useState("");
-  const [isRepasswordValid, setIsRepasswordValid] = useState(true);
+  const [email, setEmail] = useState<string>("");
+  const [isEmailValid, setIsEmailValid] = useState<boolean>(true);
+  const [password, setPassword] = useState<string>("");
+  const [repassword, setRepassword] = useState<string>("");
+  const [isRepasswordValid, setIsRepasswordValid] = useState<boolean>(true);
+  const [passwordValidation, setPasswordValidation] = useState<PasswordValidationResult>({
+    isValid: true,
+    hasMinLength: true,
+    hasUpperCase: true,
+    hasLowerCase: true,
+    hasDigit: true,
+  });
 
-  const [isPasswordHasUpperCase, setIsPasswordHasUpperCase] = useState(true);
-  const [isPasswordHasLowerCase, setIsPasswordHasLowerCase] = useState(true);
-  const [isPasswordHasDigit, setIsPasswordHasDigit] = useState(true);
-  const [isPasswordValid, setIsPasswordValid] = useState(true);
+  useEffect(() => {
+    setIsEmailValid(validateEmail(email));
+  }, [email]);
 
-  const handleEmailChange = (e) => {
+  useEffect(() => {
+    setPasswordValidation(validatePassword(password));
+    setIsRepasswordValid(password === repassword);
+  }, [password, repassword]);
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-    setIsEmailValid(validateEmail(e.target.value));
   };
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
-    validatePassword(e.target.value);
-    setIsRepasswordValid(e.target.value === repassword);
   };
 
-  const handleRepasswordChange = (e) => {
+  const handleRepasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRepassword(e.target.value);
-    setIsRepasswordValid(e.target.value === password);
-  };
-
-  const validatePassword = (password) => {
-    setIsPasswordValid(password.length >= 8);
-    setIsPasswordHasUpperCase(/[A-Z]/.test(password));
-    setIsPasswordHasLowerCase(/[a-z]/.test(password));
-    setIsPasswordHasDigit(/[0-9]/.test(password));
   };
 
   const handleSignup = () => {
-    if (
-      !isEmailValid ||
-      !isPasswordValid ||
-      !isPasswordHasUpperCase ||
-      !isPasswordHasLowerCase ||
-      !isPasswordHasDigit ||
-      !isRepasswordValid
-    ) {
+    if (!isEmailValid || !passwordValidation.isValid || !isRepasswordValid) {
       return;
     }
-
-    signUpUser(email, password);
+    console.log("Signing up...");
+    registerUser(email, password);
   };
 
   return (
@@ -101,22 +95,15 @@ export default function Signup() {
                   type="password"
                   variant="bordered"
                   value={password}
-                  color={
-                    !isPasswordValid ||
-                    !isPasswordHasUpperCase ||
-                    !isPasswordHasLowerCase ||
-                    !isPasswordHasDigit
-                      ? "danger"
-                      : "primary"
-                  }
+                  color={!passwordValidation.isValid ? "danger" : "primary"}
                   errorMessage={
-                    !isPasswordValid
+                    !passwordValidation.hasMinLength
                       ? "Password must be at least 8 characters long"
-                      : !isPasswordHasUpperCase
+                      : !passwordValidation.hasUpperCase
                       ? "Password must contain at least one uppercase letter"
-                      : !isPasswordHasLowerCase
+                      : !passwordValidation.hasLowerCase
                       ? "Password must contain at least one lowercase letter"
-                      : !isPasswordHasDigit
+                      : !passwordValidation.hasDigit
                       ? "Password must contain at least one digit"
                       : ""
                   }
@@ -145,7 +132,11 @@ export default function Signup() {
                 >
                   Close
                 </Button>
-                <Button color="primary" onPress={handleSignup}>
+                <Button
+                  color="primary"
+                  onPress={handleSignup}
+                  disabled={!isEmailValid || !passwordValidation.isValid || !isRepasswordValid}
+                >
                   Sign up
                 </Button>
               </ModalFooter>
