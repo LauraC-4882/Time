@@ -10,6 +10,10 @@ import LetterPage from "./pages/letter/LetterPage";
 //init firebase
 import "./firebase/index.ts";
 
+import "./firebase/index.ts";
+import Profile from "./pages/profile/Profile";
+import ProfileSetting from "./pages/setting/Setting.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +32,11 @@ const router = createBrowserRouter([
         path: "/about",
         element: <AboutPage />,
       },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {path: "/profile/settings", element: <ProfileSetting />},
     ],
   },
 ]);
