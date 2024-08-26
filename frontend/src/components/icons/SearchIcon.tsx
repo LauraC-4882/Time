@@ -1,5 +1,20 @@
 import React from "react";
-export const SearchIcon = ({size = 24, strokeWidth = 1.5, width, height, ...props}) => (
+
+interface SearchIconProps {
+  size?: number;
+  strokeWidth?: number;
+  width?: number;
+  height?: number;
+  [key: string]: any;
+}
+
+export const SearchIcon: React.FC<SearchIconProps> = ({
+  size = 24,
+  strokeWidth = 1.5,
+  width,
+  height,
+  ...props
+}) => (
   <svg
     aria-hidden="true"
     fill="none"
@@ -26,4 +41,5 @@ export const SearchIcon = ({size = 24, strokeWidth = 1.5, width, height, ...prop
     />
   </svg>
 );
+
 export default SearchIcon;

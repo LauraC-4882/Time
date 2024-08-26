@@ -1,9 +1,12 @@
 import {Avatar, Button, Card, CardBody, Divider} from "@nextui-org/react";
 import {VscArchive, VscComment, VscHeart} from "react-icons/vsc";
-
 import React from "react";
 
-export let PostCards = ({children}) => {
+interface PostCardsProps {
+  children: React.ReactNode;
+}
+
+export const PostCards: React.FC<PostCardsProps> = ({children}) => {
   return (
     <div
       style={{
@@ -15,10 +18,26 @@ export let PostCards = ({children}) => {
     </div>
   );
 };
-export let PostCard = ({children, avatar = "JC", name = "Jackson Chen", userId = null}) => {
-  let userLike = userId ? userId : 123;
-  let userComments = userId ? userId : 321;
-  let userArchive = userId ? userId : 213;
+
+interface PostCardProps {
+  children: React.ReactNode;
+  avatar?: string;
+  name?: string;
+  userId?: string;
+  likes?: number;
+  comments?: number;
+  saves?: number;
+}
+
+export const PostCard: React.FC<PostCardProps> = ({
+  children,
+  avatar = "JC",
+  name = "Jackson Chen",
+  userId = "1",
+  likes = 0,
+  comments = 0,
+  saves = 0,
+}) => {
   return (
     <Card
       style={{
@@ -43,7 +62,6 @@ export let PostCard = ({children, avatar = "JC", name = "Jackson Chen", userId =
         <div style={{height: "40%"}}>
           <span>{children}</span>
         </div>
-
         <Divider style={{margin: "2% 0"}} />
         <div style={{display: "flex", justifyContent: "space-between"}}>
           <div
@@ -54,19 +72,18 @@ export let PostCard = ({children, avatar = "JC", name = "Jackson Chen", userId =
             }}
           >
             <div style={{display: "inherit", alignItems: "center"}}>
-              <VscHeart></VscHeart>
-              <span style={{marginLeft: "2px", fontSize: 14}}>{userLike}</span>
+              <VscHeart />
+              <span style={{marginLeft: "2px", fontSize: 14}}>{likes}</span>
             </div>
             <div style={{display: "inherit", alignItems: "center"}}>
-              <VscComment></VscComment>
-              <span style={{marginLeft: "2px", fontSize: 14}}>{userComments}</span>
+              <VscComment />
+              <span style={{marginLeft: "2px", fontSize: 14}}>{comments}</span>
             </div>
             <div style={{display: "inherit", alignItems: "center"}}>
-              <VscArchive></VscArchive>
-              <span style={{marginLeft: "2px", fontSize: 14}}>{userArchive}</span>
+              <VscArchive />
+              <span style={{marginLeft: "2px", fontSize: 14}}>{saves}</span>
             </div>
           </div>
-
           <Button color="primary" style={{marginRight: "4%"}}>
             Reply
           </Button>
