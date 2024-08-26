@@ -1,14 +1,23 @@
 import React, {useEffect, useState} from "react";
 import {Card, CardBody, Button, Input, Avatar, Switch, Spacer} from "@nextui-org/react";
 import {useNavigate} from "react-router-dom";
-import {onAuthStateChanged, updateProfile} from "firebase/auth";
-import {getFirestore, doc, getDoc, updateDoc} from "firebase/firestore";
-import {auth} from "../../firebase/index.ts";
+import {onAuthStateChanged, updateProfile, User} from "firebase/auth";
+import {getFirestore, doc, getDoc, updateDoc, DocumentData} from "firebase/firestore";
+import {auth} from "../../firebase/index";
 
+interface FormData {
+  displayName: string;
+  photoURL: string;
+  bio: string;
+  email: string;
+  phoneNumber: string;
+  location: string;
+  notifications: boolean;
+  privateProfile: boolean;
+}
 export default function ProfileSettings() {
-  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     displayName: "",
     photoURL: "",
     bio: "",
@@ -21,13 +30,12 @@ export default function ProfileSettings() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (authUser: User | null) => {
       if (authUser) {
         const db = getFirestore();
         const userDoc = await getDoc(doc(db, "users", authUser.uid));
         if (userDoc.exists()) {
-          const userData = userDoc.data();
-          setUser(userData);
+          const userData = userDoc.data() as DocumentData;
           setFormData({
             displayName: userData.displayName || authUser.displayName || "",
             photoURL: userData.photoURL || authUser.photoURL || "",
@@ -58,7 +66,7 @@ export default function ProfileSettings() {
     return () => unsubscribe();
   }, [navigate]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {name, value, type, checked} = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -70,8 +78,23 @@ export default function ProfileSettings() {
     console.log("Saving profile...");
     try {
       const db = getFirestore();
-      await updateDoc(doc(db, "users", auth.currentUser.uid), formData);
-      await updateProfile(auth.currentUser, {
+      const currentUser = auth.currentUser;
+      if (!currentUser) {
+        throw new Error("No authenticated user found");
+      }
+
+      const updateData = {
+        displayName: formData.displayName,
+        photoURL: formData.photoURL,
+        bio: formData.bio,
+        phoneNumber: formData.phoneNumber,
+        location: formData.location,
+        notifications: formData.notifications,
+        privateProfile: formData.privateProfile,
+      };
+
+      await updateDoc(doc(db, "users", currentUser.uid), updateData);
+      await updateProfile(currentUser, {
         displayName: formData.displayName,
         photoURL: formData.photoURL,
       });
@@ -136,18 +159,20 @@ export default function ProfileSettings() {
             <div className="flex justify-between items-center">
               <span>Enable Notifications</span>
               <Switch
-                checked={formData.notifications}
-                onChange={(e) =>
-                  setFormData((prev) => ({...prev, notifications: e.target.checked}))
+                name="notifications"
+                isSelected={formData.notifications}
+                onValueChange={(checked) =>
+                  setFormData((prev) => ({...prev, notifications: checked}))
                 }
               />
             </div>
             <div className="flex justify-between items-center">
               <span>Private Profile</span>
               <Switch
-                checked={formData.privateProfile}
-                onChange={(e) =>
-                  setFormData((prev) => ({...prev, privateProfile: e.target.checked}))
+                name="privateProfile"
+                isSelected={formData.privateProfile}
+                onValueChange={(checked) =>
+                  setFormData((prev) => ({...prev, privateProfile: checked}))
                 }
               />
             </div>

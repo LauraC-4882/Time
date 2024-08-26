@@ -19,20 +19,18 @@ import editorTheme from "./themes/CustomTheme";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 import ListMaxIndentLevelPlugin from "./plugins/ListMaxIndentLevelPlugin";
-import csss from "./RichTextEditor.css";
-console.log(csss);
+import "./RichTextEditor.css";
+
 function Placeholder() {
   return <div className="editor-placeholder">Enter some text...</div>;
 }
 
 const editorConfig = {
-  // The editor theme
   theme: editorTheme,
-  // Handling of errors during update
-  onError(error) {
+  namespace: "TimeEditor",
+  onError(error: any) {
     throw error;
   },
-  // Any custom nodes go here
   nodes: [
     HeadingNode,
     ListNode,

@@ -1,10 +1,10 @@
-import {Button, Card, CardBody, Input} from "@nextui-org/react";
-import React, {useEffect, useState} from "react";
-import {VscArrowSmallLeft, VscArrowSmallRight} from "react-icons/vsc";
-import {PostCard, PostCards} from "../../components/PostCardsComp";
+import { Button, Card, CardBody, Input } from "@nextui-org/react";
+import React, { useEffect, useState } from "react";
+import { VscArrowSmallLeft, VscArrowSmallRight } from "react-icons/vsc";
+import { PostCard, PostCards } from "../../components/PostCardsComp";
 import SearchIcon from "../../components/icons/SearchIcon";
 import PostModal from "./PostModal";
-import {getPosts, Post} from "../../service/postService";
+import { getPosts, Post } from "../../services/postService";
 
 const Home = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -36,7 +36,7 @@ const Home = () => {
   };
 
   return (
-    <div style={{display: "flex", flexDirection: "column", padding: "50px"}}>
+    <div style={{ display: "flex", flexDirection: "column", padding: "50px" }}>
       <div
         className="main-left"
         style={{
@@ -47,10 +47,12 @@ const Home = () => {
         }}
       >
         <div>
-          <h1 style={{fontSize: 30}}>What's everyone up to?</h1>
-          <p style={{color: "rgba(0,0,0,.7)"}}>Leave a comment or give them a heart</p>
+          <h1 style={{ fontSize: 30 }}>What's everyone up to?</h1>
+          <p style={{ color: "rgba(0,0,0,.7)" }}>
+            Leave a comment or give them a heart
+          </p>
         </div>
-        <div style={{width: "300px", margin: "20px 0px"}}>
+        <div style={{ width: "300px", margin: "20px 0px" }}>
           <Input
             placeholder="Type to search..."
             size="sm"
@@ -98,7 +100,7 @@ const Home = () => {
 
 const PagingCard = () => {
   return (
-    <Card style={{width: "350px", height: "65px"}}>
+    <Card style={{ width: "350px", height: "65px" }}>
       <CardBody
         style={{
           display: "flex",
@@ -107,13 +109,13 @@ const PagingCard = () => {
         }}
       >
         <Button isIconOnly>
-          <VscArrowSmallLeft style={{width: "20px", height: "20px"}} />
+          <VscArrowSmallLeft style={{ width: "20px", height: "20px" }} />
         </Button>
         <Button isIconOnly>1</Button>
         <Button isIconOnly>2</Button>
         <Button isIconOnly>3</Button>
         <Button isIconOnly>
-          <VscArrowSmallRight style={{width: "20px", height: "20px"}} />
+          <VscArrowSmallRight style={{ width: "20px", height: "20px" }} />
         </Button>
       </CardBody>
     </Card>

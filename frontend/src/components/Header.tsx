@@ -1,8 +1,5 @@
-import React, {useEffect, useState, useRef} from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
-  Button,
-  Card,
-  Tooltip,
   Badge,
   Avatar,
   Navbar,
@@ -11,15 +8,14 @@ import {
   NavbarItem,
   Link,
 } from "@nextui-org/react";
-import {Outlet} from "react-router-dom";
-import {ProfileCard} from "./ProfileCard";
+import { ProfileCard } from "./ProfileCard";
 import "./Header.css";
-import {onAuthStateChanged, User} from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import Login from "./login/Login";
 import SignupCard from "./sign/SignupCard";
-import {auth} from "../firebase/index";
-import {getUserInfo} from "../service/userService";
-import {UserInfo} from "../model/userModel";
+import { auth } from "../firebase/index";
+import { getUserInfo } from "../services/userService";
+import { UserInfo } from "../models/userModel";
 
 interface NavItem {
   content: string;
@@ -79,7 +75,7 @@ const Header: React.FC = () => {
   return (
     <Navbar
       className="navbar"
-      style={{display: "flex", backgroundColor: "rgba(250, 233, 137, 0.8)"}}
+      style={{ display: "flex", backgroundColor: "rgba(250, 233, 137, 0.8)" }}
     >
       <NavbarBrand className="navbar-brand">
         <a href=".">
@@ -87,7 +83,7 @@ const Header: React.FC = () => {
         </a>
       </NavbarBrand>
       <NavbarContent className="navbar-content" justify="center">
-        {navList.map(({content, link}) => (
+        {navList.map(({ content, link }) => (
           <NavbarItem key={content}>
             <Link color="foreground" href={link}>
               {content}
@@ -98,10 +94,17 @@ const Header: React.FC = () => {
       <NavbarContent justify="end">
         {user ? (
           <NavbarItem className="profile-container">
-            <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <div
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <Link href="/profile">
                 <Badge content="5" color="primary">
-                  <Avatar radius="md" size="md" src={user.photoURL || undefined} />
+                  <Avatar
+                    radius="md"
+                    size="md"
+                    src={user.photoURL || undefined}
+                  />
                 </Badge>
               </Link>
               {isHovering && (

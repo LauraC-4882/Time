@@ -1,11 +1,26 @@
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword, User} from "firebase/auth";
-import {auth} from "../firebase/index";
-import {createUserDocument, getUserInfo, updateUserInfo} from "../service/userService";
-import {UserInfo} from "@/model/userModel";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  User,
+} from "firebase/auth";
+import { auth } from "../firebase/index";
+import {
+  createUserDocument,
+  getUserInfo,
+  updateUserInfo,
+} from "../services/userService";
+import { UserInfo } from "@/models/userModel";
 
-export async function registerUser(email: string, password: string): Promise<User | null> {
+export async function registerUser(
+  email: string,
+  password: string
+): Promise<User | null> {
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
     const user = userCredential.user;
     await createUserDocument(user);
     console.log("User registered and document created successfully");
@@ -16,9 +31,16 @@ export async function registerUser(email: string, password: string): Promise<Use
   }
 }
 
-export async function loginUser(email: string, password: string): Promise<UserInfo | null> {
+export async function loginUser(
+  email: string,
+  password: string
+): Promise<UserInfo | null> {
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
     const user = userCredential.user;
     const userInfo = await getUserInfo(user.uid);
     console.log("User logged in successfully", userInfo);
@@ -29,7 +51,9 @@ export async function loginUser(email: string, password: string): Promise<UserIn
   }
 }
 
-export async function updateProfile(updatedInfo: Partial<UserInfo>): Promise<void> {
+export async function updateProfile(
+  updatedInfo: Partial<UserInfo>
+): Promise<void> {
   const user = auth.currentUser;
   if (user) {
     try {

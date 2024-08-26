@@ -1,7 +1,7 @@
-import {doc, getDoc, setDoc, Timestamp, updateDoc} from "firebase/firestore";
-import {db} from "../firebase/index";
-import {UserInfo, createUserInfo} from "../model/userModel";
-import {User} from "firebase/auth";
+import { doc, getDoc, setDoc, Timestamp, updateDoc } from "firebase/firestore";
+import { db } from "../firebase/index";
+import { UserInfo, createUserInfo } from "../models/userModel";
+import { User } from "firebase/auth";
 
 export async function getUserInfo(userId: string): Promise<UserInfo | null> {
   const userRef = doc(db, "users", userId);
@@ -53,7 +53,7 @@ export async function createUserDocument(authUser: User): Promise<void> {
 
 export async function updateUserInfo(
   userId: string,
-  updatedInfo: Partial<UserInfo>,
+  updatedInfo: Partial<UserInfo>
 ): Promise<void> {
   const userRef = doc(db, "users", userId);
   try {

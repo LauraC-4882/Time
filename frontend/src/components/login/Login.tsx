@@ -1,5 +1,4 @@
-// Filename - Form.js
-import React, {useState} from "react";
+import React, {useState, ChangeEvent} from "react";
 import {
   NextUIProvider,
   Modal,
@@ -28,20 +27,27 @@ const pageStyle = {
     transform: "translate(-40%,-40%)",
   },
 };
-//bind with modal in div
+
+// Dummy function to simulate login
+const loginUserWithPassword = (email: string, password: string): boolean => {
+  // Add your login logic here
+  return email === "test@example.com" && password === "password123";
+};
+
 export default function Login() {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isInvalid, setIsInvalid] = useState(false);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [isInvalid, setIsInvalid] = useState<boolean>(false);
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     if (isInvalid) {
       setIsInvalid(false);
     }
   };
-  const handlePasswordChange = (e) => {
+
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
     if (isInvalid) {
       setIsInvalid(false);

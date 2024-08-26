@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from "react";
-import {Card, CardHeader, Avatar} from "@nextui-org/react";
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell} from "@nextui-org/react";
-import {Listbox, ListboxItem} from "@nextui-org/react";
-import {onAuthStateChanged, signOut, User} from "firebase/auth";
-import {auth} from "../firebase";
-import {UserInfo} from "../model/userModel";
-import {getUserInfo} from "../service/userService";
+import React, { useEffect, useState } from "react";
+import { Card, CardHeader, Avatar } from "@nextui-org/react";
+import { Listbox, ListboxItem } from "@nextui-org/react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import { UserInfo } from "@models/userModel";
+import { getUserInfo } from "../services/userService";
 
 export const ProfileCard = () => {
   const [user, setUser] = useState<UserInfo | null>(null);
@@ -41,7 +40,9 @@ export const ProfileCard = () => {
             <h4 className="text-small font-semibold leading-none text-default-600">
               {user?.displayName}
             </h4>
-            <h5 className="text-small tracking-tight text-default-400">@{user?.email}</h5>
+            <h5 className="text-small tracking-tight text-default-400">
+              @{user?.email}
+            </h5>
           </div>
         </div>
       </CardHeader>

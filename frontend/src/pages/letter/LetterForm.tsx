@@ -1,14 +1,18 @@
-import {Button, Divider, Input, RadioGroup, Radio, Checkbox, DatePicker} from "@nextui-org/react";
+import {Button, Divider, Input, RadioGroup, Radio, Checkbox} from "@nextui-org/react";
 import React, {useRef} from "react";
-import TextEditor from "../../components/editor/RichTextEditor";
+import TextEditor from "../../components/Editor/RichTextEditor";
 import ModalCard from "../../components/ModalCard";
-import Relationship from "../letter/Relationship";
-import Receive from "../letter/Receive";
+import Relationship from "./Relationship";
+import Receive from "./Receive";
 
-import {CalendarDate} from "@internationalized/date";
-export let LetterForm = ({handleQuit, isOpen}) => {
-  const editorRef = useRef(null);
-  const [isSelected, setIsSelected] = React.useState(false);
+interface LetterFormProps {
+  handleQuit: () => void;
+  isOpen: boolean;
+}
+
+export const LetterForm: React.FC<LetterFormProps> = ({handleQuit, isOpen}) => {
+  const editorRef = useRef<HTMLDivElement | null>(null);
+  const [isSelected, setIsSelected] = React.useState<boolean>(false);
 
   return (
     <ModalCard handleQuit={handleQuit} isOpen={isOpen}>
@@ -30,11 +34,11 @@ export let LetterForm = ({handleQuit, isOpen}) => {
           <Radio value="no">No</Radio>
         </RadioGroup>
         <p style={{fontSize: 14, fontWeight: 700, marginBottom: "10px"}}>If yes, your name:</p>
-        <Input type="name" label="Your Name" />
+        <Input type="text" label="Your Name" />
         <p style={{fontSize: 14, fontWeight: 700, marginBottom: "10px"}}>
           How would you call your receiver?
         </p>
-        <Input type="name" label="Receiver Name" />
+        <Input type="text" label="Receiver Name" />
         <p style={{fontSize: 14, fontWeight: 700, marginBottom: "10px"}}>
           What is your relationship with your receiver?
         </p>
@@ -55,16 +59,21 @@ export let LetterForm = ({handleQuit, isOpen}) => {
           What is your sending method to your receiver?
         </p>
         <Receive style={{fontSize: 14, fontWeight: 700, marginBottom: "10px", width: "10px"}} />
-        <Input type="address" label="Receiver address" />
+        <Input type="text" label="Receiver address" />
         <p style={{fontSize: 14, fontWeight: 700, marginBottom: "10px"}}>
           Your contact information
         </p>
         <Input type="email" label="Email/phone" />
         <p style={{fontSize: 14, fontWeight: 700, marginBottom: "20px"}}>Main letter</p>
-        <TextEditor></TextEditor>
+        <TextEditor />
 
         <div
-          style={{display: "flex", width: "inherit", justifyContent: "flex-end", marginTop: "10px"}}
+          style={{
+            display: "flex",
+            width: "inherit",
+            justifyContent: "flex-end",
+            marginTop: "10px",
+          }}
         >
           <div style={{display: "flex", width: "35%", justifyContent: "space-between"}}>
             <Button color="primary" radius="full">
@@ -82,4 +91,5 @@ export let LetterForm = ({handleQuit, isOpen}) => {
     </ModalCard>
   );
 };
+
 export default LetterForm;

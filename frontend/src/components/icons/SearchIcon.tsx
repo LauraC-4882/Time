@@ -5,7 +5,7 @@ interface SearchIconProps {
   strokeWidth?: number;
   width?: number;
   height?: number;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export const SearchIcon: React.FC<SearchIconProps> = ({
