@@ -1,12 +1,13 @@
-import {useEffect, useState} from "react";
-import {Tabs, Tab, Card, User, CardBody, Button} from "@nextui-org/react";
-import {useNavigate} from "react-router-dom";
-import {onAuthStateChanged, User as FirebaseUser} from "firebase/auth";
-import {getFirestore, doc, getDoc} from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { Tabs, Tab, Card, User, CardBody, Button } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged, User as FirebaseUser } from "firebase/auth";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import Cad from "../../utils/post";
 import EditCard from "../../components/EditCard";
+// @ts-ignore
 import People from "../../utils/PeopleList";
-import {auth} from "../../firebase/index";
+import { auth } from "../../firebase/index";
 
 interface UserProfile {
   name: string;
@@ -21,19 +22,25 @@ export default function Profile() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser: FirebaseUser | null) => {
-      if (firebaseUser) {
-        setUser({
-          name: firebaseUser.displayName ? firebaseUser.displayName : "Jackson",
-          description: "Frontend developer and UI/UX enthusiast. Join me on this coding adventure!",
-          avatar: "/avatars/avatar-1.png",
-        });
-      } else {
-        // User is signed out, redirect to error page
-        navigate("/error");
-      }
-      setLoading(false);
-    });
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      async (firebaseUser: FirebaseUser | null) => {
+        if (firebaseUser) {
+          setUser({
+            name: firebaseUser.displayName
+              ? firebaseUser.displayName
+              : "Jackson",
+            description:
+              "Frontend developer and UI/UX enthusiast. Join me on this coding adventure!",
+            avatar: "/avatars/avatar-1.png",
+          });
+        } else {
+          // User is signed out, redirect to error page
+          navigate("/error");
+        }
+        setLoading(false);
+      },
+    );
 
     return () => unsubscribe();
   }, [navigate]);
@@ -60,24 +67,35 @@ export default function Profile() {
   }
 
   return (
-    <div style={{display: "flex", padding: "50px 200px 50px 200px"}}>
-      <div style={{display: "inherit"}} className="flex w-4/5 max-w-4xl flex-col m-4">
+    <div style={{ display: "flex", padding: "50px 200px 50px 200px" }}>
+      <div
+        style={{ display: "inherit" }}
+        className="flex w-4/5 max-w-4xl flex-col m-4"
+      >
         <Tabs aria-label="Options" color="warning" variant="underlined">
-          <Tab key="followings" title="Followings" style={{marginRight: "80px"}}>
+          <Tab
+            key="followings"
+            title="Followings"
+            style={{ marginRight: "80px" }}
+          >
             <Card>
               <CardBody>
                 <People />
               </CardBody>
             </Card>
           </Tab>
-          <Tab key="followers" title="Followers" style={{marginRight: "80px"}}>
+          <Tab
+            key="followers"
+            title="Followers"
+            style={{ marginRight: "80px" }}
+          >
             <Card className="max-w-3/4">
               <CardBody className="max-w-3/4">
                 <People />
               </CardBody>
             </Card>
           </Tab>
-          <Tab key="drafts" title="Drafts" style={{marginRight: "80px"}}>
+          <Tab key="drafts" title="Drafts" style={{ marginRight: "80px" }}>
             <Card>
               <CardBody>
                 <Cad />
@@ -96,7 +114,12 @@ export default function Profile() {
       <div className="flex column w-4/5 max-w-4xl flex-col m-4">
         <div
           className="flex"
-          style={{width: "100%", marginLeft: "20%", marginTop: "10%", marginBottom: "5%"}}
+          style={{
+            width: "100%",
+            marginLeft: "20%",
+            marginTop: "10%",
+            marginBottom: "5%",
+          }}
         >
           {isEditing ? (
             <EditCard user={user} onSave={handleSave} onCancel={handleCancel} />
