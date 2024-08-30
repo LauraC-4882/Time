@@ -3,19 +3,19 @@ import Information from "./Information";
 import Offer from "./Offer";
 export const AboutPage = () => {
   return (
-    <div class="about" style={{backgroundColor: "#F6EDBD"}}>
+    <div className="about" style={{backgroundColor: "#F6EDBD"}}>
       <center>
         <div
-          class="Abouttop"
+          className="Abouttop"
           style={{display: "flex", flexDirection: "row", padding: "70px", justifyContent: "center"}}
         >
           <div style={{display: "flex", flexDirection: "column", padding: "70px"}}>
-            <h
-              class="about.slogan"
+            <h1
+              className="about.slogan"
               style={{display: "flex", color: "dark yellow", fontSize: "50px", fontWeight: "bold"}}
             >
               "Our Slogan"
-            </h>
+            </h1>
             <p style={{fontSize: "14px", color: "grey"}}>introduction</p>
           </div>
           <Image
@@ -25,7 +25,7 @@ export const AboutPage = () => {
         </div>
       </center>
       <center>
-        <div class="arrow"></div>
+        <div className="arrow"></div>
       </center>
       <div style={{padding: "30px"}}>
         <Offer />
