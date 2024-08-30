@@ -16,6 +16,7 @@ import SignupCard from "./sign/SignupCard";
 import { auth } from "../firebase/index";
 import { getUserInfo } from "../services/userService";
 import { UserInfo } from "../models/userModel";
+import SentenceSwitchers from "./SentenceSwitchers";
 
 interface NavItem {
   content: string;
@@ -75,7 +76,7 @@ const Header: React.FC = () => {
   return (
     <Navbar
       className="navbar"
-      style={{ display: "flex", backgroundColor: "rgba(250, 233, 137, 0.8)" }}
+      style={{ display: "flex", height:"120px",backgroundColor: "rgba(250, 233, 137, 0.8)" }}
     >
       <NavbarBrand className="navbar-brand">
         <a href=".">
@@ -120,7 +121,10 @@ const Header: React.FC = () => {
             <SignupCard />
           </>
         )}
-      </NavbarContent>
+
+      </NavbarContent>           
+       <span style={{ position: "absolute", top: "95%", left: "30%", fontStyle: "italic", fontSize: "15px", color: "grey" }}><SentenceSwitchers /></span>
+
     </Navbar>
   );
 };

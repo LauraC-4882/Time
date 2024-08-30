@@ -1,12 +1,12 @@
 import {Image, Card, CardHeader, CardBody} from "@nextui-org/react";
 import {Spacer} from "@nextui-org/react";
-import ContentOffer from "./ContentOffer";
+import ContentOffer from "./ContentOffer.ts";
 import {OfferCard} from "./OfferCard";
 
 let Offer = () => {
   return (
     <>
-      <div class="Aboutmid" style={{display: "flex", flexDirection: "column"}}>
+      <div className="Aboutmid" style={{display: "flex", flexDirection: "column"}}>
         <center>
           <div
             style={{
@@ -17,7 +17,7 @@ let Offer = () => {
               justifyContent: "center",
             }}
           >
-            <h>Our Services</h>
+            <h1>Our Services</h1>
           </div>
           <div
             style={{
@@ -28,17 +28,17 @@ let Offer = () => {
               justifyContent: "center",
             }}
           >
-            <h>What we offer</h>
+            <h1>What we offer</h1>
           </div>
           <div style={{display: "flex", color: "gray", fontSize: "20px", justifyContent: "center"}}>
-            <h>What we offer</h>
+            <h1>What we offer</h1>
           </div>
           <div style={{display: "flex", color: "gray", fontSize: "15px", justifyContent: "center"}}>
-            <p>enjoy and protect a peaceful environment for sharing feelings</p>
+            <p>Enjoy and protect a peaceful environment for sharing feelings</p>
           </div>
         </center>
       </div>
-      <div class="cards">
+      <div className="cards">
         <div
           className="flex"
           style={{flexDirection: "row", justifyContent: "center", margin: "30px"}}

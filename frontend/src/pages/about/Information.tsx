@@ -1,11 +1,11 @@
 import {Image, Card, CardHeader, CardBody} from "@nextui-org/react";
 import {Spacer} from "@nextui-org/react";
 import {InfoCard} from "./InfoCard";
-import ContentInfo from "./ContentInfo";
+import ContentInfo from "./ContentInfo.ts";
 let Information = () => {
   return (
     <>
-      <div class="Aboutbutton" style={{display: "flex", flexDirection: "column"}}>
+      <div className="Aboutbutton" style={{display: "flex", flexDirection: "column"}}>
         <center>
           <div
             style={{
@@ -16,7 +16,7 @@ let Information = () => {
               justifyContent: "center",
             }}
           >
-            <h>Our Team</h>
+            <h1>Our Team</h1>
           </div>
           <div
             style={{
@@ -27,17 +27,17 @@ let Information = () => {
               justifyContent: "center",
             }}
           >
-            <h>Our Awesome Team</h>
+            <h1>Our Awesome Team</h1>
           </div>
           <div style={{display: "flex", color: "gray", fontSize: "20px", justifyContent: "center"}}>
-            <h>Why are we doing this</h>
+            <h1>Why are we doing this</h1>
           </div>
           <div style={{display: "flex", color: "gray", fontSize: "15px", justifyContent: "center"}}>
             <p>We want to be the small drops to form the warm ocean</p>
           </div>
         </center>
       </div>
-      <div class="cards">
+      <div className="cards">
         <div
           className="flex"
           style={{flexDirection: "row", justifyContent: "center", margin: "30px"}}

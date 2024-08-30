@@ -7,22 +7,24 @@ export const AboutPage = () => {
       <center>
         <div
           className="Abouttop"
-          style={{display: "flex", flexDirection: "row", padding: "70px", justifyContent: "center"}}
+          style={{display: "flex", flexDirection: "row", justifyContent: "center"}}
         >
-          <div style={{display: "flex", flexDirection: "column", padding: "70px"}}>
-            <h1
+          <div style={{top:"100px",display: "flex", flexDirection: "column", padding: "120px",width:"40%"}}>
+          <h1
               className="about.slogan"
-              style={{display: "flex", color: "dark yellow", fontSize: "50px", fontWeight: "bold"}}
+              style={{display: "flex", color: "dark yellow", fontSize: "45px", fontWeight: "bold"}}
             >
-              "Our Slogan"
+              <p>"Connect, Reflect, and Preserve—Your Future Awaits."</p>
+              
             </h1>
-            <p style={{fontSize: "14px", color: "grey"}}>introduction</p>
           </div>
-          <Image
-            width={300}
+          <Image style={{top:"89px"}}
+            width={500}
             src={"https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"}
           />
         </div>
+        <p style={{width:"70%",fontSize: "18px", color: "grey",padding:"60px"}}>Welcome to Time Capsule, a sanctuary where peace and love guide your journey of self-discovery. Here, you can connect with others, share experiences, and build a community rooted in mutual respect and understanding. Our platform offers a unique space to write letters to your future self, capturing your thoughts, dreams, and aspirations for safekeeping. Whether you seek to reflect on your past, share wisdom, or simply send a message of hope, Time Capsule ensures that your words will stand the test of time. Join us in creating a legacy of love, connection, and personal growth.</p>
+
       </center>
       <center>
         <div className="arrow"></div>
