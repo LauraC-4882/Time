@@ -38,7 +38,6 @@ export default function Receive({style, ...props}: ReceiveProps) {
         style={{
           fontSize: 14,
           fontWeight: 700,
-          marginBottom: "10px",
           marginTop: "10px",
         }}
       >

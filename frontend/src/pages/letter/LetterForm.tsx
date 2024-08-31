@@ -1,4 +1,4 @@
-import {Button, Divider, Input, RadioGroup, Radio, Checkbox} from "@nextui-org/react";
+import {Button, Divider, Input, RadioGroup, Radio, Checkbox,DatePicker} from "@nextui-org/react";
 import React, {useRef} from "react";
 import TextEditor from "../../components/Editor/RichTextEditor";
 import ModalCard from "../../components/ModalCard";
@@ -21,7 +21,7 @@ export const LetterForm: React.FC<LetterFormProps> = ({handleQuit, isOpen}) => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-around",
-          padding: "40px",
+          padding: "50px",
           marginBottom: "10px",
           marginTop: "10px",
         }}
@@ -43,7 +43,7 @@ export const LetterForm: React.FC<LetterFormProps> = ({handleQuit, isOpen}) => {
           What is your relationship with your receiver?
         </p>
         <Relationship
-          style={{fontSize: 14, fontWeight: 700, marginBottom: "10px", width: "10px"}}
+          style={{fontSize: 14, fontWeight: 700, marginBottom: "10px"}}
         />
         <Checkbox isSelected={isSelected} onValueChange={setIsSelected}>
           <p style={{fontSize: 10, fontWeight: 500, marginBottom: "10px", color: "red"}}>
@@ -52,18 +52,20 @@ export const LetterForm: React.FC<LetterFormProps> = ({handleQuit, isOpen}) => {
           </p>
         </Checkbox>
 
-        <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-          {/* <DatePicker label={"Send Date"} placeholderValue={new CalendarDate(1995, 11, 6)} className="max-w-sm" /> */}
-        </div>
+       
         <p style={{fontSize: 14, fontWeight: 700, marginBottom: "10px"}}>
           What is your sending method to your receiver?
         </p>
-        <Receive style={{fontSize: 14, fontWeight: 700, marginBottom: "10px", width: "10px"}} />
+        <Receive style={{fontSize: 14, fontWeight: 700, marginBottom: "10px"}} />
         <Input type="text" label="Receiver address" />
         <p style={{fontSize: 14, fontWeight: 700, marginBottom: "10px"}}>
           Your contact information
         </p>
         <Input type="email" label="Email/phone" />
+        <p style={{fontSize: 14, fontWeight: 700, marginBottom: "10px"}}>
+          Receiving date
+        </p>
+        <DatePicker label="Birth date" className="max-w-[284px]" />
         <p style={{fontSize: 14, fontWeight: 700, marginBottom: "20px"}}>Main letter</p>
         <TextEditor />
 

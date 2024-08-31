@@ -76,7 +76,7 @@ const Header: React.FC = () => {
   return (
     <Navbar
       className="navbar"
-      style={{ display: "flex", height:"120px",backgroundColor: "rgba(250, 233, 137, 0.8)" }}
+      style={{ display: "flex", height:"110px",backgroundColor: "rgba(250, 233, 137, 0.8)" }}
     >
       <NavbarBrand className="navbar-brand">
         <a href=".">
