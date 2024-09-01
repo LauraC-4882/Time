@@ -3,7 +3,7 @@ import React from "react";
 
 export const InfoCard = ({info}) => (
   <div style={{flexDirection: "row", justifyContent: "center", margin: "30px"}}>
-    <Card className="col-span-3 sm:col-span-2 h-[300px]">
+    <Card className="col-span-3 sm:col-span-2 h-[500px]">
       <Image
         removeWrapper
         alt="Card background"
@@ -11,8 +11,12 @@ export const InfoCard = ({info}) => (
         src={info.img}
       />
       <CardFooter className="absolute bg-white/80 border-zinc-100/50 z-10 bottom-4 w-[calc(100%_-_24px)] border-1 py-1 z-10 ml-3 rounded-large flex-col !items-start">
-        <p className="text-tiny text-black/60 uppercase font-bold">{info.role}</p>
-        <h4 className="text-black font-medium text-large">{info.description}</h4>
+        <h4 className="text-black font-medium text-large">{info.name}</h4>        
+        <p className="text-tiny text-black/60 uppercase font-bold">{info.description}</p>
+
+        <h4 className="text-black font-medium text-large">{info.name1}</h4>        
+        <p className="text-tiny text-black/60 uppercase font-bold">{info.description1}</p>
+
       </CardFooter>
     </Card>
     <Spacer x={4} />

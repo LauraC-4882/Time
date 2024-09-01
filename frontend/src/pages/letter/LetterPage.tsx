@@ -33,7 +33,7 @@ export default function LetterPage() {
   return (
     <>
     
-      <div style={{padding:"70px",width:"100%"}}>
+      <div style={{padding:"30px",width:"100%"}}>
         <center>
       <div className="space-y-1">
         <h4 className="text-medium font-medium">Write to Your Future Self</h4>
@@ -78,7 +78,7 @@ export default function LetterPage() {
     </div>  
     </div>
     
-    <div style={{padding:"70px"}}>
+    <div style={{padding:"50px"}}>
     <Pagination loop showControls color="warning" total={5} initialPage={1} />
 
     </div>
