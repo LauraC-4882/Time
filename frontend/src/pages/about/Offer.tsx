@@ -44,7 +44,7 @@ let Offer = () => {
           style={{flexDirection: "row", justifyContent: "center", margin: "30px"}}
         >
           {ContentOffer.map((e) => (
-            <OfferCard img={e.img} head={e.head} p1={e.p1} p2={e.p2}></OfferCard>
+            <OfferCard img={e.img} head={e.head} p1={e.p1} p2={e.p2} p={e.p} pp={e.pp}></OfferCard>
           ))}
         </div>
       </div>
